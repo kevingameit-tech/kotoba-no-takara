@@ -1,0 +1,111 @@
+# CI for Kotoba no Takara: checks the lesson data and runs the GUT tests.
+#
+# Action versions verified on 2026-10-05 with read-only `gh api` calls
+# (repos/<owner>/<repo>/releases/latest and each action.yml):
+#   actions/checkout                v7.0.1  -> @v7
+#   actions/setup-python            v7.0.0  -> @v7  (input: python-version)
+#   chickensoft-games/setup-godot   v2.4.3  -> @v2  (inputs: version, use-dotnet, include-templates)
+# Godot 4.7.2-stable (non-.NET) and GUT 9.7.1 are the versions fixed by the team.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-data:
+    name: validate-data
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Test the validator
+        run: python3 tools/test_validate_data.py
+
+      - name: Validate data/
+        run: python3 tools/validate_data.py
+
+  gut-tests:
+    name: gut-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Godot 4.7.2
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: "4.7.2"
+          use-dotnet: false
+          include-templates: false
+
+      - name: Show Godot version
+        run: godot --version
+
+      - name: Install GUT 9.7.1
+        run: bash tools/install_gut.sh
+
+      # A fresh clone has no .godot/ folder. The import pass builds it, including
+      # the class cache that makes "extends GutTest" work (GUT issue #491).
+      # Godot's exit code is only a warning here. What matters is the class cache:
+      # without GutTest in it, gut_cmdln.gd quits with code 0 and runs no test.
+      - name: Import the project
+        run: |
+          timeout 300 godot --headless --import || echo "::warning::godot --import exited with code $?"
+          if ! grep -q '"GutTest"' .godot/global_script_class_cache.cfg 2>/dev/null; then
+            echo "::error::The import did not register GutTest in .godot/global_script_class_cache.cfg. Read the import log above."
+            exit 1
+          fi
+
+      # No -d flag: in headless mode the debugger would wait for input on an error.
+      # GUT returns exit code 1 when a test fails, which turns this job red.
+      # It also returns 0 when no test ran, so the next step reads the JUnit report.
+      - name: Run GUT tests
+        run: godot --headless -s addons/gut/gut_cmdln.gd -gconfig=.gutconfig.json -gjunit_xml_file="$RUNNER_TEMP/gut_junit.xml" -gexit
+
+      # Fails when the report is missing, when nothing ran, when a test failed,
+      # or when a tests/unit/test_*.gd file ran no test (for example a parse error).
+      - name: Check that every test file ran
+        run: |
+          python3 - "$RUNNER_TEMP/gut_junit.xml" <<'EOF'
+          import sys
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          report = Path(sys.argv[1])
+          if not report.is_file():
+              print("::error::GUT wrote no JUnit report, so no test ran. Read the log of the previous step.")
+              sys.exit(1)
+          root = ET.parse(report).getroot()
+          ran = {}
+          for suite in root.iter("testsuite"):
+              name = suite.get("name", "")
+              script = name[: name.find(".gd") + 3] if ".gd" in name else name
+              ran[script] = ran.get(script, 0) + int(suite.get("tests", "0"))
+          expected = sorted(p.as_posix() for p in Path("tests/unit").rglob("test_*.gd"))
+          missing = [p for p in expected if ran.get(p, 0) == 0]
+          total = int(root.get("tests", "0"))
+          failures = int(root.get("failures", "0"))
+          print(f"GUT: {total} tests, {failures} failed, {len(expected)} test files.")
+          for path in missing:
+              print(f"::error file={path}::No test from this file ran (parse error, or no test_ function).")
+          if total == 0 or failures or missing:
+              sys.exit(1)
+          EOF
