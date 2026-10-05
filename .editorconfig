@@ -1,0 +1,41 @@
+# Editor settings shared by the whole team. https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# GDScript style guide: indent with tabs.
+[*.gd]
+indent_style = tab
+indent_size = 4
+
+# Files written by the Godot editor: leave them as Godot saves them.
+[*.{tscn,tres,godot,import,cfg}]
+indent_style = tab
+trim_trailing_whitespace = false
+
+[*.py]
+indent_style = space
+indent_size = 4
+
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Windows PowerShell 5.1 needs a BOM to read UTF-8 (Romanian letters).
+[*.ps1]
+charset = utf-8-bom
+indent_style = space
+indent_size = 4
+
+[*.sh]
+indent_style = space
+indent_size = 2
+
+[*.md]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false

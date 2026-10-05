@@ -1,0 +1,43 @@
+# Godot 4+ specific ignores (template written by the Godot editor)
+.godot/
+/android/
+
+# Godot-specific ignores (github/gitignore Godot.gitignore)
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+.nomedia
+~*.dll
+
+# Imported translations (generated from the CSV files in i18n/)
+*.translation
+
+# GUT is installed by tools/install_gut.sh or tools/install_gut.ps1, never committed
+addons/gut/
+
+# Build and export outputs (published by CI, never committed)
+build/
+export/
+*.exe
+*.pck
+*.zip
+
+# Telemetry and analysis: raw player data never goes into the repo.
+# Only aggregated numbers go to docs/data/.
+analysis/raw/
+analysis/output/
+*.raw.csv
+*.raw.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
