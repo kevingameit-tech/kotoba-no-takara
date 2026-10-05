@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "pools": {
+    "c1_row_a": {
+      "items": [
+        "h_a",
+        "h_i",
+        "h_u",
+        "h_e",
+        "h_o"
+      ]
+    },
+    "c1_row_k": {
+      "items": [
+        "h_ka",
+        "h_ki",
+        "h_ku",
+        "h_ke",
+        "h_ko"
+      ]
+    },
+    "c1_row_s": {
+      "items": [
+        "h_sa",
+        "h_shi",
+        "h_su",
+        "h_se",
+        "h_so"
+      ]
+    },
+    "c1_row_t": {
+      "items": [
+        "h_ta",
+        "h_chi",
+        "h_tsu",
+        "h_te",
+        "h_to"
+      ]
+    },
+    "c1_row_n": {
+      "items": [
+        "h_na",
+        "h_ni",
+        "h_nu",
+        "h_ne",
+        "h_no"
+      ]
+    },
+    "c1_row_h": {
+      "items": [
+        "h_ha",
+        "h_hi",
+        "h_fu",
+        "h_he",
+        "h_ho"
+      ]
+    },
+    "c1_row_m": {
+      "items": [
+        "h_ma",
+        "h_mi",
+        "h_mu",
+        "h_me",
+        "h_mo"
+      ]
+    },
+    "c1_row_y": {
+      "items": [
+        "h_ya",
+        "h_yu",
+        "h_yo"
+      ]
+    },
+    "c1_row_r": {
+      "items": [
+        "h_ra",
+        "h_ri",
+        "h_ru",
+        "h_re",
+        "h_ro"
+      ]
+    },
+    "c1_row_w": {
+      "items": [
+        "h_wa",
+        "h_wo",
+        "h_n"
+      ]
+    },
+    "c1_boss_tengu": {
+      "items": [
+        "h_a",
+        "h_i",
+        "h_u",
+        "h_e",
+        "h_o",
+        "h_ka",
+        "h_ki",
+        "h_ku",
+        "h_ke",
+        "h_ko",
+        "h_sa",
+        "h_shi",
+        "h_su",
+        "h_se",
+        "h_so",
+        "h_ta",
+        "h_chi",
+        "h_tsu",
+        "h_te",
+        "h_to",
+        "h_na",
+        "h_ni",
+        "h_nu",
+        "h_ne",
+        "h_no",
+        "h_ha",
+        "h_hi",
+        "h_fu",
+        "h_he",
+        "h_ho",
+        "h_ma",
+        "h_mi",
+        "h_mu",
+        "h_me",
+        "h_mo",
+        "h_ya",
+        "h_yu",
+        "h_yo",
+        "h_ra",
+        "h_ri",
+        "h_ru",
+        "h_re",
+        "h_ro",
+        "h_wa",
+        "h_wo",
+        "h_n"
+      ]
+    },
+    "c2_katakana_all": {
+      "items": [
+        "k_a",
+        "k_i",
+        "k_u",
+        "k_e",
+        "k_o",
+        "k_ka",
+        "k_ki",
+        "k_ku",
+        "k_ke",
+        "k_ko",
+        "k_sa",
+        "k_shi",
+        "k_su",
+        "k_se",
+        "k_so",
+        "k_ta",
+        "k_chi",
+        "k_tsu",
+        "k_te",
+        "k_to",
+        "k_na",
+        "k_ni",
+        "k_nu",
+        "k_ne",
+        "k_no",
+        "k_ha",
+        "k_hi",
+        "k_fu",
+        "k_he",
+        "k_ho",
+        "k_ma",
+        "k_mi",
+        "k_mu",
+        "k_me",
+        "k_mo",
+        "k_ya",
+        "k_yu",
+        "k_yo",
+        "k_ra",
+        "k_ri",
+        "k_ru",
+        "k_re",
+        "k_ro",
+        "k_wa",
+        "k_wo",
+        "k_n"
+      ]
+    }
+  }
+}

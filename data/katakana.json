@@ -1,0 +1,700 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "id": "k_a",
+      "script": "kata",
+      "kana": "ア",
+      "romaji": "a",
+      "alt_romaji": [],
+      "row": "a",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_ma"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_i",
+      "script": "kata",
+      "kana": "イ",
+      "romaji": "i",
+      "alt_romaji": [],
+      "row": "a",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_u",
+      "script": "kata",
+      "kana": "ウ",
+      "romaji": "u",
+      "alt_romaji": [],
+      "row": "a",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_wa"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_e",
+      "script": "kata",
+      "kana": "エ",
+      "romaji": "e",
+      "alt_romaji": [],
+      "row": "a",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_o",
+      "script": "kata",
+      "kana": "オ",
+      "romaji": "o",
+      "alt_romaji": [],
+      "row": "a",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ka",
+      "script": "kata",
+      "kana": "カ",
+      "romaji": "ka",
+      "alt_romaji": [],
+      "row": "k",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ki",
+      "script": "kata",
+      "kana": "キ",
+      "romaji": "ki",
+      "alt_romaji": [],
+      "row": "k",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ku",
+      "script": "kata",
+      "kana": "ク",
+      "romaji": "ku",
+      "alt_romaji": [],
+      "row": "k",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_ta",
+        "k_ke"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ke",
+      "script": "kata",
+      "kana": "ケ",
+      "romaji": "ke",
+      "alt_romaji": [],
+      "row": "k",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_ku"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ko",
+      "script": "kata",
+      "kana": "コ",
+      "romaji": "ko",
+      "alt_romaji": [],
+      "row": "k",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_yu"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_sa",
+      "script": "kata",
+      "kana": "サ",
+      "romaji": "sa",
+      "alt_romaji": [],
+      "row": "s",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_shi",
+      "script": "kata",
+      "kana": "シ",
+      "romaji": "shi",
+      "alt_romaji": [
+        "si"
+      ],
+      "row": "s",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_tsu",
+        "k_n"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_su",
+      "script": "kata",
+      "kana": "ス",
+      "romaji": "su",
+      "alt_romaji": [],
+      "row": "s",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_nu"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_se",
+      "script": "kata",
+      "kana": "セ",
+      "romaji": "se",
+      "alt_romaji": [],
+      "row": "s",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_so",
+      "script": "kata",
+      "kana": "ソ",
+      "romaji": "so",
+      "alt_romaji": [],
+      "row": "s",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_n",
+        "k_tsu"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ta",
+      "script": "kata",
+      "kana": "タ",
+      "romaji": "ta",
+      "alt_romaji": [],
+      "row": "t",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_ku"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_chi",
+      "script": "kata",
+      "kana": "チ",
+      "romaji": "chi",
+      "alt_romaji": [
+        "ti"
+      ],
+      "row": "t",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_te"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_tsu",
+      "script": "kata",
+      "kana": "ツ",
+      "romaji": "tsu",
+      "alt_romaji": [
+        "tu"
+      ],
+      "row": "t",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_shi",
+        "k_so"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_te",
+      "script": "kata",
+      "kana": "テ",
+      "romaji": "te",
+      "alt_romaji": [],
+      "row": "t",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_chi"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_to",
+      "script": "kata",
+      "kana": "ト",
+      "romaji": "to",
+      "alt_romaji": [],
+      "row": "t",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_na",
+      "script": "kata",
+      "kana": "ナ",
+      "romaji": "na",
+      "alt_romaji": [],
+      "row": "n",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ni",
+      "script": "kata",
+      "kana": "ニ",
+      "romaji": "ni",
+      "alt_romaji": [],
+      "row": "n",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_nu",
+      "script": "kata",
+      "kana": "ヌ",
+      "romaji": "nu",
+      "alt_romaji": [],
+      "row": "n",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_su"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ne",
+      "script": "kata",
+      "kana": "ネ",
+      "romaji": "ne",
+      "alt_romaji": [],
+      "row": "n",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_no",
+      "script": "kata",
+      "kana": "ノ",
+      "romaji": "no",
+      "alt_romaji": [],
+      "row": "n",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ha",
+      "script": "kata",
+      "kana": "ハ",
+      "romaji": "ha",
+      "alt_romaji": [],
+      "row": "h",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_hi",
+      "script": "kata",
+      "kana": "ヒ",
+      "romaji": "hi",
+      "alt_romaji": [],
+      "row": "h",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_fu",
+      "script": "kata",
+      "kana": "フ",
+      "romaji": "fu",
+      "alt_romaji": [
+        "hu"
+      ],
+      "row": "h",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_he",
+      "script": "kata",
+      "kana": "ヘ",
+      "romaji": "he",
+      "alt_romaji": [],
+      "row": "h",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ho",
+      "script": "kata",
+      "kana": "ホ",
+      "romaji": "ho",
+      "alt_romaji": [],
+      "row": "h",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ma",
+      "script": "kata",
+      "kana": "マ",
+      "romaji": "ma",
+      "alt_romaji": [],
+      "row": "m",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_a"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_mi",
+      "script": "kata",
+      "kana": "ミ",
+      "romaji": "mi",
+      "alt_romaji": [],
+      "row": "m",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_mu",
+      "script": "kata",
+      "kana": "ム",
+      "romaji": "mu",
+      "alt_romaji": [],
+      "row": "m",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_me",
+      "script": "kata",
+      "kana": "メ",
+      "romaji": "me",
+      "alt_romaji": [],
+      "row": "m",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_mo",
+      "script": "kata",
+      "kana": "モ",
+      "romaji": "mo",
+      "alt_romaji": [],
+      "row": "m",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ya",
+      "script": "kata",
+      "kana": "ヤ",
+      "romaji": "ya",
+      "alt_romaji": [],
+      "row": "y",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_yu",
+      "script": "kata",
+      "kana": "ユ",
+      "romaji": "yu",
+      "alt_romaji": [],
+      "row": "y",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_ko"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_yo",
+      "script": "kata",
+      "kana": "ヨ",
+      "romaji": "yo",
+      "alt_romaji": [],
+      "row": "y",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ra",
+      "script": "kata",
+      "kana": "ラ",
+      "romaji": "ra",
+      "alt_romaji": [],
+      "row": "r",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ri",
+      "script": "kata",
+      "kana": "リ",
+      "romaji": "ri",
+      "alt_romaji": [],
+      "row": "r",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ru",
+      "script": "kata",
+      "kana": "ル",
+      "romaji": "ru",
+      "alt_romaji": [],
+      "row": "r",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_re",
+      "script": "kata",
+      "kana": "レ",
+      "romaji": "re",
+      "alt_romaji": [],
+      "row": "r",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_ro",
+      "script": "kata",
+      "kana": "ロ",
+      "romaji": "ro",
+      "alt_romaji": [],
+      "row": "r",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_wa",
+      "script": "kata",
+      "kana": "ワ",
+      "romaji": "wa",
+      "alt_romaji": [],
+      "row": "w",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_u"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_wo",
+      "script": "kata",
+      "kana": "ヲ",
+      "romaji": "wo",
+      "alt_romaji": [
+        "o"
+      ],
+      "row": "w",
+      "chapter": 2,
+      "confusable_ids": [],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    },
+    {
+      "id": "k_n",
+      "script": "kata",
+      "kana": "ン",
+      "romaji": "n",
+      "alt_romaji": [
+        "nn"
+      ],
+      "row": "n_final",
+      "chapter": 2,
+      "confusable_ids": [
+        "k_so",
+        "k_shi"
+      ],
+      "mnemonic": {
+        "ro": "",
+        "en": ""
+      }
+    }
+  ]
+}

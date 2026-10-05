@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "encounters": {
+    "c1_kappa_1": {
+      "chapter": 1,
+      "pool_id": "c1_row_a",
+      "is_boss": false,
+      "enemy": "res://battle/data/enemies/placeholder.tres"
+    },
+    "c1_kappa_2": {
+      "chapter": 1,
+      "pool_id": "c1_row_k",
+      "is_boss": false,
+      "enemy": "res://battle/data/enemies/placeholder.tres"
+    },
+    "c1_kodama_1": {
+      "chapter": 1,
+      "pool_id": "c1_row_s",
+      "is_boss": false,
+      "enemy": "res://battle/data/enemies/placeholder.tres"
+    },
+    "c1_tanuki_1": {
+      "chapter": 1,
+      "pool_id": "c1_row_t",
+      "is_boss": false,
+      "enemy": "res://battle/data/enemies/placeholder.tres"
+    },
+    "c1_boss_tengu": {
+      "chapter": 1,
+      "pool_id": "c1_boss_tengu",
+      "is_boss": true,
+      "enemy": "res://battle/data/enemies/placeholder.tres"
+    }
+  }
+}

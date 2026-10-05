@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "dialogues": {
+    "c1_intro_kenji": [
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Bine ai venit în Tokyo!",
+          "en": "Welcome to Tokyo!"
+        },
+        "ja": "ようこそ、とうきょうへ！",
+        "romaji": "Youkoso, Toukyou e!",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Eu sunt Kenji, profesorul tău.",
+          "en": "I'm Kenji, your teacher."
+        },
+        "ja": "わたしは けんじ。きみの せんせいだよ。",
+        "romaji": "Watashi wa Kenji. Kimi no sensei da yo.",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Ai venit printr-un portal, nu? Ești bine?",
+          "en": "You came through a warp, right? Are you okay?"
+        },
+        "ja": "ワープで きたんだね。だいじょうぶ？",
+        "romaji": "Waapu de kitan da ne. Daijoubu?",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Japonia are trei comori.",
+          "en": "Japan has three treasures."
+        },
+        "ja": "にほんには みっつの たからが あるんだ。",
+        "romaji": "Nihon ni wa mittsu no takara ga arun da.",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Prima comoară este hiragana. Un tengu o păzește la altar.",
+          "en": "The first treasure is hiragana. A tengu guards it at the shrine."
+        },
+        "ja": "さいしょの たからは ひらがな。じんじゃの てんぐが まもって いるよ。",
+        "romaji": "Saisho no takara wa hiragana. Jinja no tengu ga mamotte iru yo.",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Hai să învățăm împreună!",
+          "en": "Let's do our best together!"
+        },
+        "ja": "いっしょに がんばろう！",
+        "romaji": "Issho ni ganbarou!",
+        "set_flag": "c1_intro_done"
+      }
+    ]
+  }
+}
