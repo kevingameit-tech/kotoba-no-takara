@@ -1,0 +1,79 @@
+# GitHub issue form: a task for the project board.
+# Syntax: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
+name: Sarcină
+description: O bucată de muncă pentru board (o funcție, o reparație planificată, teste, documentație).
+labels: ["type:task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        O sarcină bună se termină în 1 până la 3 zile. Dacă e mai mare, împarte-o în mai multe issue-uri.
+        Titlul: scurt și clar, de exemplu „BattleModel: daune și limitele HP”.
+  - type: textarea
+    id: descriere
+    attributes:
+      label: Ce trebuie făcut
+      description: Descrie sarcina în câteva rânduri.
+      placeholder: De exemplu, BattleModel calculează daunele după un răspuns corect sau greșit.
+    validations:
+      required: true
+  - type: textarea
+    id: gata-cand
+    attributes:
+      label: Gata când
+      description: Cum verificăm că e gata? Ceva ce se poate vedea sau testa.
+      placeholder: |
+        - Testele GUT pentru daune trec în CI
+        - HP nu scade sub 0
+    validations:
+      required: true
+  - type: dropdown
+    id: zona
+    attributes:
+      label: Zona
+      description: Ce parte a proiectului atinge? Proprietarii sunt în docs/contracts.md, secțiunea 3.
+      options:
+        - world
+        - battle
+        - ui
+        - quiz-data
+        - ci
+        - docs
+    validations:
+      required: true
+  - type: dropdown
+    id: prioritate
+    attributes:
+      label: Prioritate (MoSCoW)
+      description: "Must: fără ea versiunea nu iese. Should: important, dar se poate amâna. Could: doar dacă rămâne timp."
+      options:
+        - Must
+        - Should
+        - Could
+    validations:
+      required: true
+  - type: input
+    id: termen
+    attributes:
+      label: Termen
+      description: Data sau etapa, de exemplu „19 oct” sau „v0.1”.
+      placeholder: 19 oct
+    validations:
+      required: false
+  - type: input
+    id: depinde-de
+    attributes:
+      label: Depinde de
+      description: Alte issue-uri care trebuie terminate înainte.
+      placeholder: "#12, #15"
+    validations:
+      required: false
+  - type: checkboxes
+    id: verificari
+    attributes:
+      label: Înainte să începi
+      options:
+        - label: Am verificat dacă sarcina atinge un contract din docs/contracts.md.
+          required: false
+        - label: Sarcina e în zona mea sau proprietarul zonei știe de ea.
+          required: false

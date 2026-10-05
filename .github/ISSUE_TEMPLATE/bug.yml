@@ -1,0 +1,97 @@
+# GitHub issue form: bug report.
+# Syntax: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
+name: Bug
+description: Ceva nu merge cum ar trebui.
+title: "[Bug] "
+labels: ["type:bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Mulțumim! Un bug cu pași clari se repară de zece ori mai repede.
+        Nu pune date personale: nume, e-mailuri, poze cu oameni.
+  - type: textarea
+    id: ce-s-a-intamplat
+    attributes:
+      label: Ce s-a întâmplat
+      description: Ce ai văzut? Copiază aici și mesajul de eroare, dacă există.
+    validations:
+      required: true
+  - type: textarea
+    id: pasi
+    attributes:
+      label: Pașii ca să apară din nou
+      placeholder: |
+        1. Pornesc jocul pe iPhone
+        2. Vorbesc cu Kenji-sensei
+        3. Apăs B în timpul dialogului
+    validations:
+      required: true
+  - type: textarea
+    id: asteptat
+    attributes:
+      label: Ce te așteptai să se întâmple
+    validations:
+      required: true
+  - type: dropdown
+    id: zona
+    attributes:
+      label: Zona
+      options:
+        - world
+        - battle
+        - ui
+        - quiz-data
+        - ci
+        - docs
+    validations:
+      required: true
+  - type: dropdown
+    id: platforma
+    attributes:
+      label: Platforma
+      description: Unde apare? Poți alege mai multe.
+      multiple: true
+      options:
+        - Editorul Godot
+        - Calculator, Chrome
+        - Calculator, Firefox
+        - Calculator, Safari
+        - iPhone, Safari
+        - Android, Chrome
+        - Altceva (scrie mai jos)
+    validations:
+      required: true
+  - type: input
+    id: versiune
+    attributes:
+      label: Versiunea jocului
+      description: E scrisă pe ecranul de titlu, de exemplu 0.1.0. Pentru editor, scrie commit-ul sau branch-ul.
+      placeholder: 0.1.0
+    validations:
+      required: false
+  - type: dropdown
+    id: prioritate
+    attributes:
+      label: Prioritate (MoSCoW)
+      description: "Must: blochează jocul sau versiunea. Should: deranjează mult. Could: mic detaliu."
+      options:
+        - Must
+        - Should
+        - Could
+    validations:
+      required: true
+  - type: textarea
+    id: captura
+    attributes:
+      label: Captură sau video
+      description: Trage aici o imagine sau un video scurt. Fără persoane în imagine.
+    validations:
+      required: false
+  - type: checkboxes
+    id: confidentialitate
+    attributes:
+      label: Confidențialitate
+      options:
+        - label: Acest issue nu conține date personale (nume, e-mailuri, poze sau video cu oameni).
+          required: true

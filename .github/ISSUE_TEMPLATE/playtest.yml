@@ -1,0 +1,100 @@
+# GitHub issue form: a finding from a playtest round.
+# Only aggregated numbers belong here, never raw tester data.
+# Syntax: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
+name: Observație din playtest
+description: O problemă sau o idee care vine din datele unui playtest (log-uri, formular, observații la laborator).
+title: "[Playtest] "
+labels: ["playtest"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fiecare schimbare făcută după playtest pornește de aici: date, ipoteză, schimbare, apoi aceeași metrică măsurată din nou.
+        **Doar cifre agregate.** Fără nume, e-mailuri, citate din răspunsuri libere sau capturi cu testeri.
+  - type: input
+    id: versiune
+    attributes:
+      label: Versiunea testată
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: sursa
+    attributes:
+      label: Sursa datelor
+      multiple: true
+      options:
+        - Log-urile din joc
+        - Formularul de după joc
+        - Playtest la laborator
+        - Observație în timpul unei sesiuni de joc
+    validations:
+      required: true
+  - type: input
+    id: jucatori
+    attributes:
+      label: Câți jucători (n)
+      placeholder: "23"
+    validations:
+      required: true
+  - type: textarea
+    id: observatie
+    attributes:
+      label: Ce am observat
+      description: Faptul, cu cifre.
+      placeholder: Doar 42% răspund corect la ぬ la prima încercare; 60% aleg め.
+    validations:
+      required: true
+  - type: input
+    id: metrica
+    attributes:
+      label: Metrica
+      description: Ce măsurăm înainte și după schimbare (una din metricile fixate înainte de 9 nov).
+      placeholder: acuratețea la prima încercare pentru h_nu
+    validations:
+      required: true
+  - type: textarea
+    id: ipoteza
+    attributes:
+      label: Ipoteza
+      description: De ce credem că se întâmplă?
+      placeholder: ぬ și め arată la fel, iar mnemonica nu le deosebește.
+    validations:
+      required: false
+  - type: textarea
+    id: propunere
+    attributes:
+      label: Schimbarea propusă
+      placeholder: Mnemonică nouă pentru ぬ și o întrebare care le pune una lângă alta.
+    validations:
+      required: false
+  - type: dropdown
+    id: zona
+    attributes:
+      label: Zona
+      options:
+        - world
+        - battle
+        - ui
+        - quiz-data
+        - ci
+        - docs
+    validations:
+      required: true
+  - type: dropdown
+    id: prioritate
+    attributes:
+      label: Prioritate (MoSCoW)
+      options:
+        - Must
+        - Should
+        - Could
+    validations:
+      required: true
+  - type: checkboxes
+    id: confidentialitate
+    attributes:
+      label: Confidențialitate
+      options:
+        - label: Am pus doar cifre agregate. Fără nume, e-mailuri, răspunsuri libere copiate sau capturi cu testeri.
+          required: true

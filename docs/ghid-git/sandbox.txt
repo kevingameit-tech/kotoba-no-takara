@@ -1,0 +1,10 @@
+Fișier de exercițiu pentru ghidul Git (capitolul 10, exercițiul 2).
+Jocul nu îl folosește. Aici ai voie să greșești.
+
+== Perechea 1 ==
+Cuvântul zilei: (scrie aici)
+Culoarea preferată: (scrie aici)
+
+== Perechea 2 ==
+Cuvântul zilei: (scrie aici)
+Culoarea preferată: (scrie aici)

@@ -1,0 +1,73 @@
+# CODEOWNERS for Kotoba no Takara
+#
+# What this file does: when a pull request changes a file, GitHub automatically
+# asks the owner of the matching path for a review. If several lines match the
+# same file, the LAST matching line wins, so general rules come first and
+# specific rules come last.
+#
+# Why every rule is commented out: GitHub accepts only real usernames of
+# collaborators with write access. A wrong name shows an error and the rule
+# does nothing. The names below (@utilizator-...) are placeholders.
+#
+# TODO (Kevin): after everyone has accepted the invitation and added their
+# username to docs/TEAM.md, replace each placeholder with the real @username
+# and remove the "# " at the start of each rule line.
+#
+# Do NOT turn on "Require review from Code Owners" for main. Most paths have
+# one owner, GitHub never lets authors approve their own pull request, and
+# main has no admin bypass, so every owner would be blocked on their own
+# folder. This file only requests the owner as reviewer automatically; the
+# merge rule stays "1 approval from someone who ran the code".
+#
+# The ownership rules are explained in docs/contracts.md, section 3.
+
+# ---- Default: anything without a more specific owner ----
+# *                                @utilizator-kevin
+
+# ---- Kevin: content, quiz engine, tools, contracts ----
+# /data/                           @utilizator-kevin
+# /quiz/                           @utilizator-kevin
+# /tools/                          @utilizator-kevin
+# /autoload/question_bank.gd       @utilizator-kevin
+# /docs/                           @utilizator-kevin
+# /LICENSE                         @utilizator-kevin
+# /PRIVACY.md                      @utilizator-kevin @utilizator-mariana
+# /README.md                       @utilizator-kevin
+
+# ---- David: world, assets, credits, scene routing ----
+# /world/                          @utilizator-david
+# /assets/                         @utilizator-david
+# /CREDITS.md                      @utilizator-david
+# /autoload/scene_router.gd        @utilizator-david
+
+# ---- Ioana: battle, CI, contribution rules, GUT setup ----
+# /battle/                         @utilizator-ioana
+# /.github/workflows/              @utilizator-ioana
+# /.github/pull_request_template.md  @utilizator-ioana
+# /.github/ISSUE_TEMPLATE/         @utilizator-ioana
+# /CONTRIBUTING.md                 @utilizator-ioana
+# /docs/DEFINITION_OF_DONE.md      @utilizator-ioana
+# /.gutconfig.json                 @utilizator-ioana
+# /tools/install_gut.sh            @utilizator-ioana
+# /tools/install_gut.ps1           @utilizator-ioana
+# /tests/fakes/                    @utilizator-ioana
+
+# ---- Mariana: UI, translations, fonts, settings, save, telemetry client, web export ----
+# /ui/                             @utilizator-mariana
+# /i18n/                           @utilizator-mariana
+# /fonts/                          @utilizator-mariana
+# /autoload/settings.gd            @utilizator-mariana
+# /autoload/game_state.gd          @utilizator-mariana
+# /autoload/save_manager.gd        @utilizator-mariana
+# /autoload/telemetry.gd           @utilizator-mariana
+# /export_presets.cfg              @utilizator-mariana
+
+# ---- Shared files: one approval from any listed owner is enough ----
+# Input Map and resolution live here; change it only in small dedicated PRs.
+# /project.godot                   @utilizator-david @utilizator-kevin
+
+# Tests in /tests/unit/ have no fixed owner: the owner of the code under test
+# reviews them (the default rule above applies).
+
+# ---- This file ----
+# /.github/CODEOWNERS              @utilizator-kevin
