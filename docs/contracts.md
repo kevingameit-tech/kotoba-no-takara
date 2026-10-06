@@ -215,14 +215,14 @@ Kana item:
 
 `script` is `"hira"` or `"kata"`. `row` is one of `a k s t n h m y r w`, or `n_final` for ん / ン. `romaji` is Hepburn; `alt_romaji` lists other accepted spellings for typing mode. Audio fields are added later (Could) with a `schema_version` bump.
 
-Pool ids frozen on 2026-10-19 for chapter 1: `c1_row_a`, `c1_row_k`, `c1_row_s`, `c1_row_t`, `c1_row_n`, `c1_row_h`, `c1_row_m`, `c1_row_y`, `c1_row_r`, `c1_row_w`, `c1_boss_tengu`. Chapter 2 pool ids are fixed on 2026-11-16 (`c2_katakana_all` in `pools.json` is a draft until then). Scenes and encounters pass only pool ids, never item lists.
+Pool ids frozen on 2026-10-19 for chapter 1: `c1_row_a`, `c1_row_k`, `c1_row_s`, `c1_row_t`, `c1_row_n`, `c1_row_h`, `c1_row_m`, `c1_row_y`, `c1_row_r`, `c1_row_w` (one row each, for practice and NPC lessons), `c1_rows_a_k`, `c1_rows_s_t`, `c1_rows_n_h_m`, `c1_rows_y_r_w` (the 4 regular enemies: each asks the new rows since the previous enemy, so battles cover all 46 hiragana before the boss) and `c1_boss_tengu`. Chapter 2 pool ids are fixed on 2026-11-16 (`c2_katakana_all` in `pools.json` is a draft until then). Scenes and encounters pass only pool ids, never item lists.
 
 **Real data for stubs (use it now).** Fakes and first scenes read these ids, which already exist in `data/`:
 
 | What | Id | Content |
 |---|---|---|
 | Pools | `c1_row_a`, `c1_row_k` | 10 hiragana: あいうえお, かきくけこ |
-| Encounters | `c1_kappa_1`, `c1_kappa_2` | pools `c1_row_a` and `c1_row_k`, enemy `placeholder.tres` |
+| Encounter | `c1_kappa_1` | pool `c1_rows_a_k` (the same 10 hiragana), enemy `placeholder.tres` |
 | Boss encounter | `c1_boss_tengu` | pool `c1_boss_tengu` (all 46 hiragana) |
 | Dialogue | `c1_intro_kenji` | 6 lines by Kenji-sensei, the last one sets the flag `c1_intro_done` |
 
@@ -525,4 +525,4 @@ Rules:
 | Version | Date | Change | Approved by |
 |---|---|---|---|
 | v0 | 2026-10-05 | First draft (Kevin) | to be presented on 2026-10-12 |
-| v0.1 | 2026-10-06 | Real data for stubs (section 7). QuizEngine details: `_init(bank)`, distractors, `explain`, boxes, choice mode only in v0.1 (section 8) | to be reviewed by Ioana |
+| v0.1 | 2026-10-06 | Real data for stubs and one pool per regular enemy (section 7). QuizEngine details: `_init(bank)`, distractors, `explain`, boxes, choice mode only in v0.1 (section 8) | to be reviewed by Ioana |
