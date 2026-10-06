@@ -1,6 +1,6 @@
 # Contracts between modules (v0)
 
-> **Status: v0 draft.** Written by Kevin on 2026-10-05, presented at the lab on 2026-10-12.
+> **Status: v0.1 draft.** Written by Kevin on 2026-10-05, updated on 2026-10-06, presented at the lab on 2026-10-12.
 > Items marked **PROPOSAL** are decided by the team vote on 2026-10-12 or by the owners before the freeze date.
 
 **Why this file exists.** Four people build four parts of one game at the same time. A contract fixes the names, signatures and data shapes that two parts use to talk to each other, so each person can work (and test with fakes) without waiting for the others.
@@ -217,6 +217,15 @@ Kana item:
 
 Pool ids frozen on 2026-10-19 for chapter 1: `c1_row_a`, `c1_row_k`, `c1_row_s`, `c1_row_t`, `c1_row_n`, `c1_row_h`, `c1_row_m`, `c1_row_y`, `c1_row_r`, `c1_row_w`, `c1_boss_tengu`. Chapter 2 pool ids are fixed on 2026-11-16 (`c2_katakana_all` in `pools.json` is a draft until then). Scenes and encounters pass only pool ids, never item lists.
 
+**Real data for stubs (use it now).** Fakes and first scenes read these ids, which already exist in `data/`:
+
+| What | Id | Content |
+|---|---|---|
+| Pools | `c1_row_a`, `c1_row_k` | 10 hiragana: あいうえお, かきくけこ |
+| Encounters | `c1_kappa_1`, `c1_kappa_2` | pools `c1_row_a` and `c1_row_k`, enemy `placeholder.tres` |
+| Boss encounter | `c1_boss_tengu` | pool `c1_boss_tengu` (all 46 hiragana) |
+| Dialogue | `c1_intro_kenji` | 6 lines by Kenji-sensei, the last one sets the flag `c1_intro_done` |
+
 ## 8. QuestionBank and QuizEngine
 
 Between Kevin (provider) and Ioana (battle). Frozen **2026-10-19**.
@@ -244,6 +253,7 @@ extends RefCounted
 
 signal answered(qid: String, item_id: String, correct: bool, elapsed_ms: int)
 
+func _init(bank: Object = null) -> void      # data source; null = the QuestionBank autoload
 func start(pool_id: String, rng_seed: int = -1) -> void
 func next_question() -> Dictionary
 func submit(qid: String, answer: String, elapsed_ms: int) -> Dictionary
@@ -278,14 +288,18 @@ The parameter is named `rng_seed`, not `seed`, because `seed()` is a built-in GD
 
 Rules:
 
+- `QuizEngine.new()` uses the `QuestionBank` autoload. Tests pass any object with `get_pool()`, `get_item()` and `items_for()` (`QuizEngine.new(fake_bank)`), so they do not depend on `data/`.
 - `rng_seed = -1` means random. Any other value makes the order and the distractors deterministic (used by tests).
-- After `start()`, `next_question()` never returns an empty dictionary: when the pool runs out, it reshuffles.
+- After `start()`, `next_question()` never returns an empty dictionary: when the pool runs out, it reshuffles, and the same item never comes twice in a row. The only exception is a pool that `start()` could not find: then `start()` and `next_question()` call `push_error()` and `next_question()` returns `{}`.
 - `submit()` emits `answered` exactly once per `qid`. An unknown or already answered `qid` returns `{}` and calls `push_error()` (tests use `assert_push_error`).
-- Distractors come only from rows the player has already met and never equal the expected answer.
+- Distractors come only from rows the player has already met and never equal the expected answer. "Met" means every row, in the teaching order `a k s t n h m y r w n_final`, up to the last row used by the pool. Confusable kana (`confusable_ids`) come first, then the others; no reading appears twice.
+- `explain` is the item's `mnemonic` from `data/`. Both strings stay `""` until Kevin writes the mnemonic; the battle then shows only `expected`, with a `BATTLE_` text from `ui.csv`.
 - `"choice"` answers are compared exactly. `"type"` answers are normalised inside the engine (trim, lower case, romaji to kana).
 - The engine has no nodes, no UI and no timers. The battle UI measures `elapsed_ms`. **The battle decides damage**, the engine only says correct or wrong.
 - The engine does not call `Telemetry`; the battle forwards `answered` (section 13).
-- `get_state()` returns `{ item_id: { "box": int, "seen": int, "wrong": int } }` for the save file (Leitner boxes 1 to 3 are Should). `set_state()` accepts the same shape.
+- `get_state()` returns `{ item_id: { "box": int, "seen": int, "wrong": int } }` for the save file (Leitner boxes 1 to 3 are Should). `set_state()` accepts the same shape, casts the numbers with `int()` (a JSON save gives floats) and keeps `box` between 1 and 3.
+- Every `submit()` adds 1 to `seen`. A correct answer moves the item one box up (at most 3); a wrong one adds 1 to `wrong` and sends the item back to box 1.
+- v0.1 asks only `"choice"` questions. `"type"` comes after `RomajiConverter` (decision 10, 2026-11-16).
 
 ### FakeQuizEngine (Ioana)
 
@@ -511,3 +525,4 @@ Rules:
 | Version | Date | Change | Approved by |
 |---|---|---|---|
 | v0 | 2026-10-05 | First draft (Kevin) | to be presented on 2026-10-12 |
+| v0.1 | 2026-10-06 | Real data for stubs (section 7). QuizEngine details: `_init(bank)`, distractors, `explain`, boxes, choice mode only in v0.1 (section 8) | to be reviewed by Ioana |
