@@ -3,25 +3,25 @@
   "encounters": {
     "c1_kappa_1": {
       "chapter": 1,
-      "pool_id": "c1_row_a",
-      "is_boss": false,
-      "enemy": "res://battle/data/enemies/placeholder.tres"
-    },
-    "c1_kappa_2": {
-      "chapter": 1,
-      "pool_id": "c1_row_k",
+      "pool_id": "c1_rows_a_k",
       "is_boss": false,
       "enemy": "res://battle/data/enemies/placeholder.tres"
     },
     "c1_kodama_1": {
       "chapter": 1,
-      "pool_id": "c1_row_s",
+      "pool_id": "c1_rows_s_t",
       "is_boss": false,
       "enemy": "res://battle/data/enemies/placeholder.tres"
     },
     "c1_tanuki_1": {
       "chapter": 1,
-      "pool_id": "c1_row_t",
+      "pool_id": "c1_rows_n_h_m",
+      "is_boss": false,
+      "enemy": "res://battle/data/enemies/placeholder.tres"
+    },
+    "c1_kappa_2": {
+      "chapter": 1,
+      "pool_id": "c1_rows_y_r_w",
       "is_boss": false,
       "enemy": "res://battle/data/enemies/placeholder.tres"
     },
