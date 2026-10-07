@@ -5,9 +5,11 @@
 // row of the sheet "events", with the columns of section 13. The URL can only add rows:
 // nothing can be read, changed or deleted through it.
 //
-// Only ids, numbers and fixed values are stored. Unknown fields are dropped and every string
-// must look like an id, so free text never reaches the sheet. Apps Script does not give the
-// script the sender's IP address, so it is never stored (PRIVACY.md).
+// Only ids, numbers and fixed values are stored. Unknown fields are dropped and every string must
+// match the pattern of its field (lowercase ids, romaji letters or fixed values), so sentences,
+// spaces and diacritics cannot be stored. In "type" mode `chosen` must be empty, so what a player
+// types never reaches the sheet. Apps Script does not give the script the sender's IP address,
+// so it is never stored (PRIVACY.md).
 //
 // Setup, deployment and updates: tools/log_backend/README.md.
 // Tests: node tools/log_backend/test_log_backend.js (CI runs them too).
@@ -24,10 +26,13 @@ const LOCK_WAIT_MS = 10000;
 const LAST_DAY = "2027-02-28"; // PRIVACY.md: the raw data is deleted by 1 March 2027
 const MAX_INT = 2147483647;
 
-// The first character is a letter or a digit, so no cell can start a formula ("=", "+", "-", "@").
-const ID = /^[A-Za-z0-9][A-Za-z0-9_.-]{0,47}$/;
-const ID_OR_EMPTY = /^([A-Za-z0-9][A-Za-z0-9_.-]{0,47})?$/;
-const BUILD = /^([A-Za-z0-9][A-Za-z0-9_.+-]{0,31})?$/;
+// Every text starts with a letter or a digit, so no cell can start a formula ("=", "+", "-", "@").
+const SNAKE_ID = /^[a-z][a-z0-9_]{0,47}$/; // item ids such as "h_ki" (data/README.md)
+const QID = /^q_[0-9]{1,8}$/; // made by QuizEngine as "q_%04d"
+const ENCOUNTER_ID = /^c[1-9]_[a-z0-9_]{1,45}$/; // "c1_kappa_1"
+const READING = /^([a-z]{1,24})?$/; // one of the romaji choices; "" in "type" mode
+const SCENE = /^([a-z][a-z0-9_]{0,47})?$/; // scene file name without folder or extension
+const BUILD = /^([A-Za-z0-9][A-Za-z0-9_.+-]{0,31})?$/; // application/config/version, "" if not set
 const SID = /^[0-9a-f]{32}$/; // Crypto.generate_random_bytes(16).hex_encode()
 const FORMS = ["A", "B"];
 
@@ -80,16 +85,16 @@ const EVENT_FIELDS = {
   session_start: {},
   chapter_enter: { chapter: intIn_(1, 99) },
   answer: {
-    encounter_id: text_(ID),
-    qid: text_(ID),
-    item_id: text_(ID),
+    encounter_id: text_(ENCOUNTER_ID),
+    qid: text_(QID),
+    item_id: text_(SNAKE_ID),
     mode: oneOf_(["choice", "type"]),
     correct: bool_(),
     elapsed_ms: intIn_(0, MAX_INT),
-    chosen: text_(ID_OR_EMPTY), // "" in "type" mode: typed text is never logged
+    chosen: text_(READING),
   },
   battle_end: {
-    encounter_id: text_(ID),
+    encounter_id: text_(ENCOUNTER_ID),
     outcome: oneOf_(["win", "lose", "flee"]),
     correct: intIn_(0, 999),
     wrong: intIn_(0, 999),
@@ -102,11 +107,13 @@ const EVENT_FIELDS = {
     pre_form: oneOf_(FORMS.concat([""])), // "" and -1 when the pre-test is unknown
     pre_score: intIn_(-1, 100),
   },
-  quit: { scene: text_(ID_OR_EMPTY) },
+  quit: { scene: text_(SCENE) },
 };
 
-// Rules that compare two fields, as in _values_ok() of tools/analyze_logs.py.
+// Rules that compare two fields, as in _values_ok() of tools/analyze_logs.py, plus one rule of
+// the contract: in "type" mode `chosen` stays "", because typed text is never logged.
 function crossCheck_(name, data) {
+  if (name === "answer" && data.mode === "type" && data.chosen !== "") return "value";
   if ((name === "pretest" || name === "posttest") && data.score > data.n_items) return "value";
   if (name === "posttest" && data.pre_score > data.n_items) return "value";
   return "";

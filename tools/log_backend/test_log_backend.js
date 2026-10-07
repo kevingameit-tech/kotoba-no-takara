@@ -27,12 +27,16 @@ const SID = "9f2c41d0e7ab5c3812fe06a9d4b7c1e5";
 
 // ---------------------------------------------------------------- fakes
 
+// Like Google Sheets, a cell that is not formatted as plain text turns "0.10" or "1000" into a number.
+const LOOKS_NUMERIC = /^[+-]?(\d+\.?\d*|\.\d+)(e[+-]?\d+)?$/i;
+
 class FakeSheet {
   constructor(maxRows = 1000) {
     this.rows = []; // row 1 first
     this.maxRows = maxRows;
     this.frozenRows = 0;
-    this.textRanges = []; // [first row, number of rows] of every range set to plain text
+    this.textRanges = []; // [first row, number of rows, format] of every setNumberFormat()
+    this.textRows = new Set();
     this.grownBy = [];
   }
 
@@ -62,13 +66,18 @@ class FakeSheet {
     return {
       setNumberFormat(format) {
         sheet.textRanges.push([row, numRows, format]);
+        for (let r = row; r < row + numRows; r += 1) {
+          if (format === "@") sheet.textRows.add(r);
+        }
         return this;
       },
       setValues(values) {
         assert.equal(values.length, numRows);
         values.forEach((cells, i) => {
           assert.equal(cells.length, numColumns);
-          sheet.rows[row - 1 + i] = Array.from(cells);
+          const isText = sheet.textRows.has(row + i);
+          sheet.rows[row - 1 + i] = Array.from(cells, (cell) =>
+            !isText && typeof cell === "string" && LOOKS_NUMERIC.test(cell) ? Number(cell) : cell);
         });
         return this;
       },
@@ -79,8 +88,22 @@ class FakeSheet {
   }
 }
 
+/** A Date whose "now" is fixed, so the tests give the same result on every day. */
+function fixedClock(now) {
+  return class FixedDate extends Date {
+    constructor(...args) {
+      if (args.length === 0) super(now.getTime());
+      else super(...args);
+    }
+
+    static now() {
+      return now.getTime();
+    }
+  };
+}
+
 /** Loads Code.gs into a fresh sandbox. With setupDone, the sheet "events" has its header. */
-function load({ setupDone = true, lockFree = true, broken = false, sheet = new FakeSheet() } = {}) {
+function load({ setupDone = true, lockFree = true, broken = false, sheet = new FakeSheet(), now = NOW } = {}) {
   const bookId = "book-1";
   const props = new Map(setupDone ? [["BOOK_ID", bookId]] : []);
   const sheets = new Map();
@@ -99,6 +122,7 @@ function load({ setupDone = true, lockFree = true, broken = false, sheet = new F
   };
   const calls = { flushed: 0, released: 0, logged: [], errors: [] };
   const gs = vm.createContext({
+    Date: fixedClock(now),
     SpreadsheetApp: {
       getActiveSpreadsheet: () => book,
       openById: (id) => {
@@ -218,11 +242,12 @@ test("doPost answers with JSON, doGet shows that the backend runs", () => {
 
   assert.deepEqual(JSON.parse(gs.doPost({}).text), { ok: false, error: "empty" });
 
-  const health = JSON.parse(gs.doGet().text);
-  assert.equal(health.ok, true);
-  assert.equal(health.service, "kotoba-no-takara-log");
-  assert.equal(health.v, 1);
-  assert.equal(typeof health.open, "boolean");
+  assert.deepEqual(JSON.parse(gs.doGet().text), { ok: true, service: "kotoba-no-takara-log", v: 1, open: true });
+
+  const late = load({ now: new Date("2027-03-01T00:00:00Z") });
+  assert.equal(JSON.parse(late.gs.doGet().text).open, false);
+  const out2 = late.gs.doPost({ postData: { contents: JSON.stringify([SAMPLES.quit]) } });
+  assert.deepEqual(JSON.parse(out2.text), { ok: false, error: "closed" });
 });
 
 test("doPost answers error server, and logs the cause, when Sheets fails", () => {
@@ -279,7 +304,11 @@ test("allowed edge values are stored", () => {
     ["t_ms at the limit", { ...SAMPLES.quit, t_ms: 2147483647 }],
     ["a score of 0", withData("pretest", { score: 0 })],
     ["a full score", withData("posttest", { score: 10, pre_score: 10 })],
-    ["an id of 48 characters", withData("answer", { qid: "q".repeat(48) })],
+    ["an item id of 48 characters", withData("answer", { item_id: "w_" + "a".repeat(46) })],
+    ["the reading of a word", withData("answer", { chosen: "toukyou" })],
+    ["a qid with 5 digits", withData("answer", { qid: "q_10000" })],
+    ["an encounter of chapter 3", withData("battle_end", { encounter_id: "c3_boss_oni" })],
+    ["a scene with digits", withData("quit", { scene: "misiune_1" })],
     ["a lost battle", withData("battle_end", { outcome: "flee", correct: 0, wrong: 0 })],
   ];
   const { gs } = load();
@@ -320,7 +349,23 @@ test("each wrong event is dropped with the reason used by tools/analyze_logs.py"
     ["empty item_id", withData("answer", { item_id: "" }), "value"],
     ["chosen with a name", withData("answer", { chosen: "Ana Popescu" }), "value"],
     ["chosen with a diacritic", withData("answer", { chosen: "ș" }), "value"],
-    ["id of 49 characters", withData("answer", { qid: "q".repeat(49) }), "value"],
+    ["item id of 49 characters", withData("answer", { item_id: "w_" + "a".repeat(47) }), "value"],
+    ["typed text in type mode", withData("answer", { mode: "type", chosen: "sa" }), "value"],
+    ["chosen in capitals", withData("answer", { chosen: "AnaPopescu" }), "value"],
+    ["chosen as a phone number", withData("answer", { chosen: "0722123456" }), "value"],
+    ["item_id as a phone number", withData("answer", { item_id: "0722123456" }), "value"],
+    ["qid not made by QuizEngine", withData("answer", { qid: "evil.example.com" }), "value"],
+    ["encounter_id without a chapter", withData("answer", { encounter_id: "kappa_1" }), "value"],
+    ["scene with dots", withData("quit", { scene: "ana.popescu.2008" }), "value"],
+    ["scene with a folder", withData("quit", { scene: "res://world/tokyo_town.tscn" }), "value"],
+    ["scene in capitals", withData("quit", { scene: "TokyoTown" }), "value"],
+    ["formula in chosen", withData("answer", { chosen: "=1+1" }), "value"],
+    ["formula in qid", withData("answer", { qid: "=1+1" }), "value"],
+    ["formula in encounter_id", withData("battle_end", { encounter_id: "=1+1" }), "value"],
+    ["formula in scene", withData("quit", { scene: "=1+1" }), "value"],
+    ["formula in build", { ...SAMPLES.quit, build: "=1+1" }, "value"],
+    ["build that starts with +", { ...SAMPLES.quit, build: "+1" }, "value"],
+    ["build that starts with @", { ...SAMPLES.quit, build: "@x" }, "value"],
     ["unknown mode", withData("answer", { mode: "voice" }), "value"],
     ["negative elapsed_ms", withData("answer", { elapsed_ms: -5 }), "value"],
     ["chapter 0", withData("chapter_enter", { chapter: 0 }), "value"],
@@ -404,7 +449,8 @@ const EDGE_VALUES = [
   0, -1, 1, 4, 10, 11, 99, 100, 101, 2147483647, 2147483648, 3120, 1.5, -0.5, "", "a", "A", "B", "C",
   "x y", "=1+1", "+1", "@x", "-x", "q_0003", "h_ki", "sa", "ș", "0.1.0", "web_ios", "ro", "en", "ja",
   "choice", "type", "win", "draw", true, false, null, [], {}, SID, SID.toUpperCase(), "z".repeat(48),
-  "z".repeat(49),
+  "z".repeat(49), "AnaPopescu", "0722123456", "ana.popescu", "tokyo_town", "c1_kappa_1", "q_10000",
+  "toukyou", "\t1", " sa",
 ];
 
 /** Valid events plus copies with one or two fields changed, removed or added. */
@@ -416,7 +462,9 @@ function fuzzEvents(random, count) {
     const raw = JSON.parse(JSON.stringify(SAMPLES[pick(names)]));
     const changes = Math.floor(random() * 3);
     for (let c = 0; c < changes; c += 1) {
-      const target = random() < 0.5 && raw.data ? raw.data : raw;
+      // An earlier change may have turned data into a text or a number: change raw then.
+      const dataIsObject = typeof raw.data === "object" && raw.data !== null;
+      const target = random() < 0.5 && dataIsObject ? raw.data : raw;
       const key = random() < 0.15 ? "extra_" + c : pick(Object.keys(target));
       if (random() < 0.15) delete target[key];
       else target[key] = JSON.parse(JSON.stringify(pick(EDGE_VALUES)));
@@ -480,6 +528,11 @@ test("every row the backend stores is read by tools/analyze_logs.py without a sk
   assert.equal(stored + rejected, events.length);
   assert.ok(stored >= 250 && rejected >= 150, `a useful mix: ${stored} stored, ${rejected} rejected`);
   assert.equal(sheet.rows.length, 1 + stored);
+  for (const cell of sheet.rows.slice(1).flat()) {
+    assert.equal(typeof cell, "string");
+    assert.match(cell, /^[\x20-\x7e]*$/, "printable ASCII only");
+    assert.doesNotMatch(cell, /^[=+\-@]/, "no cell can start a formula");
+  }
 
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "log_backend_"));
   try {

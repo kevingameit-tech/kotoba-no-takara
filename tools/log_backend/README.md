@@ -22,7 +22,7 @@ Backend-ul de log: un Google Apps Script publicat ca web app, care adaugă eveni
 
 Un rând pe eveniment, cu toate celulele ca text: `received_at, v, build, sid, t_ms, platform, lang, event, data`. În `data` (text JSON) intră doar câmpurile din catalog.
 
-**Nu păstrează:** adresa IP (Apps Script nu o dă scriptului), câmpurile necunoscute (sunt aruncate) și textul liber (orice text trebuie să arate ca un id).
+**Nu păstrează:** adresa IP (Apps Script nu o dă scriptului), câmpurile necunoscute (sunt aruncate) și textul liber. Fiecare text are o regulă strictă, după câmp (tabelul de mai jos): id-uri cu litere mici, citiri romaji sau valori fixe, deci nu încap propoziții, spații sau diacritice. În modul „type”, `chosen` trebuie să fie gol, deci ce scrie jucătorul nu ajunge niciodată în foaie.
 
 | Câmp | Ce acceptă |
 |---|---|
@@ -31,9 +31,12 @@ Un rând pe eveniment, cu toate celulele ca text: `received_at, v, build, sid, t
 | `platform` | `web_desktop`, `web_android`, `web_ios`, `desktop` |
 | `lang` | `ro`, `en` |
 | `build` | gol, sau litere, cifre și `_ . + -`, maximum 32 de caractere |
-| `encounter_id`, `qid`, `item_id` | litere, cifre și `_ . -`, maximum 48 de caractere |
-| `chosen`, `scene` | la fel ca id-urile, dar pot fi și goale |
-| numerele | doar întregi: `t_ms` și `elapsed_ms` de la 0 la 2147483647, scorurile de la 0 la `n_items` (`pre_score` poate fi și -1) |
+| `item_id` | litere mici, cifre și `_`, începe cu o literă (`h_ki`), maximum 48 de caractere |
+| `qid` | `q_` și cifre, cum le face QuizEngine (`q_0003`) |
+| `encounter_id` | `c`, capitolul, `_`, apoi litere mici, cifre și `_` (`c1_kappa_1`) |
+| `chosen` | o citire romaji, doar litere mici (`sa`), maximum 24; în modul „type” e mereu goală |
+| `scene` | numele fișierului scenei, fără folder și extensie (`tokyo_town`), sau gol |
+| numerele | doar întregi: `t_ms` și `elapsed_ms` de la 0 la 2147483647, `chapter` de la 1 la 99, `correct` și `wrong` din `battle_end` de la 0 la 999, `n_items` de la 1 la 100, scorurile de la 0 la `n_items` (`pre_score` poate fi și -1) |
 | `mode`, `outcome`, `form`, `pre_form` | doar valorile din catalog |
 
 Orice text începe cu o literă sau o cifră, deci nicio celulă nu poate deveni formulă (`=`, `+`, `-`, `@`).
@@ -114,7 +117,8 @@ Din 1 martie 2027 codul refuză oricum orice POST (`closed`).
 
 - Cel mult 200 de evenimente și 60.000 de caractere pe POST, 200.000 de evenimente în total.
 - Limitele Google: cel mult 30 de execuții în același timp pentru contul care a publicat și 6 minute pe execuție ([Quotas](https://developers.google.com/apps-script/guides/services/quotas)).
-- URL-ul e public. Cine îl află poate trimite evenimente false, dar doar în formatul de mai sus. Dacă apar rânduri ciudate, le lăsăm deoparte cu `--build`.
+- URL-ul e public, pentru că ajunge în build-ul web. Cine îl află poate trimite evenimente false în formatul corect și cu build-ul nostru, deci `--build` nu le separă. Poate și să umple foaia (`full`) sau să o țină ocupată (`busy`).
+- De aceea, după fiecare zi de playtest, Kevin se uită la foaie: câte rânduri au venit și la ce ore (`received_at`). Rândurile suspecte, de exemplu sute de sesiuni în câteva secunde, le șterge din foaie înainte de export. Dacă cineva atacă foaia, arhivează deployment-ul și face unul nou, cu URL nou, pentru build-ul următor.
 
 ## Testele
 
@@ -126,7 +130,7 @@ Testele rulează `Code.gs` cu servicii Google false (Node 20 sau mai nou, fără
 
 - ce se păstrează, ce se aruncă și cu ce motiv;
 - limitele;
-- că `tools/analyze_logs.py` citește fiecare rând păstrat, fără să sară vreunul (pe 6 sesiuni complete și 600 de evenimente stricate la întâmplare).
+- că `tools/analyze_logs.py` citește fiecare rând păstrat, fără să sară vreunul, și că nicio celulă nu poate deveni formulă (pe 6 sesiuni complete și 600 de evenimente stricate la întâmplare).
 
 CI le rulează în jobul `validate-data`.
 
