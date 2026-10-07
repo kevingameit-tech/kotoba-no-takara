@@ -37,7 +37,8 @@ Forma: `{ "schema_version": 1, "items": [ ... ] }`. Fiecare fișier are cele 46 
 
 Forma: `{ "schema_version": 1, "pools": { "<pool_id>": { "items": [id, ...] } } }`.
 
-- Câte un pool pentru fiecare rând de hiragana: `c1_row_a`, `c1_row_k`, `c1_row_s`, `c1_row_t`, `c1_row_n`, `c1_row_h`, `c1_row_m`, `c1_row_y`, `c1_row_r`, `c1_row_w`.
+- Câte un pool pentru fiecare rând de hiragana, pentru exerciții și pentru lecțiile NPC-urilor: `c1_row_a`, `c1_row_k`, `c1_row_s`, `c1_row_t`, `c1_row_n`, `c1_row_h`, `c1_row_m`, `c1_row_y`, `c1_row_r`, `c1_row_w`.
+- Câte un pool pentru fiecare dintre cei 4 inamici obișnuiți: `c1_rows_a_k` (10), `c1_rows_s_t` (10), `c1_rows_n_h_m` (15) și `c1_rows_y_r_w` (11, cu ん). Fiecare are rândurile noi de după inamicul dinainte, așa că înainte de boss jucătorul a exersat în luptă toate cele 46 de hiragana.
 - ん (`h_n`, rândul `n_final`) este în `c1_row_w`, împreună cu わ și を, ca în manuale. Un pool cu o singură literă nu ar avea variante de răspuns.
 - `c1_boss_tengu` are toate cele 46 de hiragana. `c2_katakana_all` are toate cele 46 de katakana.
 - Scenele și luptele trimit doar un `pool_id`, niciodată o listă de id-uri.
@@ -54,17 +55,17 @@ Forma: `{ "schema_version": 1, "encounters": { "<encounter_id>": { ... } } }`.
 | `enemy` | string | calea `res://` spre fișierul `.tres` al inamicului (îl face Ioana) |
 | `phase2_pool_id` | string, opțional (propunere) | pool-ul pentru faza 2 a boss-ului |
 
-Prima variantă pentru capitolul 1:
+Capitolul 1 (decis de Kevin pe 6 oct): fiecare inamic întreabă rândurile noi, iar boss-ul le întreabă pe toate.
 
-| Luptă | Pool |
-|---|---|
-| `c1_kappa_1` | `c1_row_a` |
-| `c1_kappa_2` | `c1_row_k` |
-| `c1_kodama_1` | `c1_row_s` |
-| `c1_tanuki_1` | `c1_row_t` |
-| `c1_boss_tengu` (boss) | `c1_boss_tengu` |
+| Luptă | Pool | Rânduri |
+|---|---|---|
+| `c1_kappa_1` | `c1_rows_a_k` | あ, か |
+| `c1_kodama_1` | `c1_rows_s_t` | さ, た |
+| `c1_tanuki_1` | `c1_rows_n_h_m` | な, は, ま |
+| `c1_kappa_2` | `c1_rows_y_r_w` | や, ら, わ și ん |
+| `c1_boss_tengu` (boss) | `c1_boss_tengu` | toate cele 46 |
 
-Toate căile `enemy` arată deocamdată spre `res://battle/data/enemies/placeholder.tres`. Ioana le înlocuiește cu inamicii reali. Ce rânduri primește fiecare luptă se decide până la 10/30, odată cu conținutul capitolului 1.
+Toate căile `enemy` arată deocamdată spre `res://battle/data/enemies/placeholder.tres`. Ioana le înlocuiește cu inamicii reali. Ordinea din tabel este și ordinea recomandată pe hartă; David o fixează în schița capitolului 1.
 
 ## dialogue/ch1.json
 
