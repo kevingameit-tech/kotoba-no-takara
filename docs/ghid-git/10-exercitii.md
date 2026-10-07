@@ -6,7 +6,7 @@ Kevin deschide pentru fiecare exercițiu un issue asignat ție. În PR scrii `Cl
 
 ## Exercițiul 1: primul tău PR (TEAM.md)
 
-**Scop**: treci o dată prin tot drumul (branch, commit, push, PR, review, merge) și verifici că GitHub îți leagă commit-urile de cont. Pașii sunt aceiași ca în [docs/TEAM.md](../TEAM.md).
+**Scop**: treci o dată prin tot drumul (branch, commit, push, PR, merge) și verifici că GitHub îți leagă commit-urile de cont. Pașii sunt aceiași ca în [docs/TEAM.md](../TEAM.md).
 
 **Timp**: 20-30 de minute.
 
@@ -32,7 +32,7 @@ Kevin deschide pentru fiecare exercițiu un issue asignat ție. În PR scrii `Cl
    ```
 
 5. Deschizi PR-ul pe GitHub (capitolul 3, pasul 9). În șablon: `Closes #N`, la „De ce” un rând simplu („Exercițiul 1: primul PR.”), la „Cum testezi” scrii „Deschide docs/TEAM.md și verifică rândul meu.”
-6. Ceri review de la un coleg (**Reviewers**, în dreapta PR-ului). Pentru exercițiul ăsta ajunge ca el să deschidă fișierul în **Files changed**, să lase un comentariu și să aprobe ([capitolul 4](04-review.md), pașii 4 și 5). Review-ul complet îl exersăm în exercițiul 3.
+6. Aștepți CI-ul verde. Din 7 oct nu mai e nevoie de aprobare, deci review-ul e opțional. Dacă vrei, ceri unui coleg (**Reviewers**, în dreapta PR-ului) să deschidă fișierul în **Files changed** și să lase un comentariu ([capitolul 4](04-review.md)). Review-ul complet îl exersăm în exercițiul 3.
 7. Apeși **Merge pull request** → **Create a merge commit** → **Confirm merge** → **Delete branch**.
 8. Faci curat local:
 
@@ -112,7 +112,7 @@ Perechile sunt cele de la laborator. **Perechea 1** lucrează pe rândurile de s
    git push -u origin docs/docs-sandbox-<prenumele-tau>
    ```
 
-5. Amândoi deschideți PR. B face review la PR-ul lui A și îl aprobă. A îl îmbină.
+5. Amândoi deschideți PR. Când CI e verde, A își îmbină PR-ul.
 
 ### Partea 2: B rezolvă conflictul
 
@@ -136,7 +136,7 @@ Perechile sunt cele de la laborator. **Perechea 1** lucrează pe rândurile de s
    git push
    ```
 
-9. A face review la PR-ul lui B și îl aprobă. B îl îmbină.
+9. Când CI e verde, B își îmbină PR-ul.
 10. Amândoi faceți curat:
 
     ```bash
@@ -169,7 +169,7 @@ Asta e exact procedura din capitolul 5.5 pentru scene.
 
 ## Exercițiul 3: review la PR-ul unui coleg
 
-**Scop**: faci un review adevărat, nu doar un clic pe „Approve”.
+**Scop**: faci un review adevărat, nu doar un clic pe „Approve”. Review-ul nu mai e obligatoriu pentru merge (din 7 oct), dar îl exersăm o dată, ca să știi să-l faci când un coleg ți-l cere.
 
 **Timp**: 20 de minute.
 
@@ -204,7 +204,7 @@ Bifează doar ce ai verificat cu ochii tăi:
 - [ ] În **Insights → Contributors** apari cu cel puțin un commit. (Graficul numără doar commit-urile din `main`, fără commit-urile de merge, și se poate actualiza cu întârziere.)
 - [ ] Ai deschis cel puțin un PR care a fost îmbinat.
 - [ ] Ai rezolvat cel puțin un conflict (exercițiul 1 sau 2).
-- [ ] Ai făcut cel puțin un review cu un comentariu și o aprobare.
+- [ ] Ai făcut cel puțin un review cu un comentariu și o aprobare (exercițiul 3).
 - [ ] Ai șters branch-urile terminate: `git branch` arată doar `main` (și ce lucrezi acum).
 - [ ] Știi unde e [fișa de comenzi](fisa-de-comenzi.md) și [capitolul 9](09-greseli-frecvente.md).
 

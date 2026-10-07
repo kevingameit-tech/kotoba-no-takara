@@ -85,7 +85,7 @@ Forma: `{ "schema_version": 1, "dialogues": { "<dialog_id>": [ replici ] } }`. I
 1. Faci un branch, de exemplu `feat/data-ch1-dialog`.
 2. Editezi JSON-ul. Păstrezi ordinea câmpurilor și indentarea de 2 spații.
 3. Rulezi `python3 tools/validate_data.py`. Trebuie să vezi „0 erori”.
-4. Dacă ai schimbat ceva ce citesc alții (un câmp nou, un pool nou, un id nou de luptă), actualizezi și `docs/contracts.md`. După înghețare, schimbarea are nevoie de 2 aprobări.
+4. Dacă ai schimbat ceva ce citesc alții (un câmp nou, un pool nou, un id nou de luptă), actualizezi și `docs/contracts.md`. După înghețare, schimbarea intră doar cu acordul scris al celeilalte părți a contractului (un comentariu „de acord” în PR sau un mesaj în grup).
 5. Deschizi PR-ul. CI rulează validatorul în jobul `validate-data`.
 
 - Un câmp nou: îl adaugi și în `tools/validate_data.py`, cu un test în `tools/test_validate_data.py`, și în tabelul de aici. Dacă se schimbă forma unui fișier, crește `schema_version`.

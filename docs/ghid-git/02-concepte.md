@@ -15,8 +15,8 @@
 | **Pull** | Aduci pe calculatorul tău commit-urile noi de pe GitHub. | Descarci actualizarea. |
 | **Push** | Trimiți pe GitHub commit-urile tale noi. | Urci salvarea ta pe server. |
 | **Pull request (PR)** | O cerere: „vreau să unesc branch-ul meu în `main`”. Are discuție, review și verificări. | Predai tema și profesorul o corectează înainte s-o pună în catalog. |
-| **Review** | Un coleg citește și rulează schimbările din PR, comentează și aprobă sau cere schimbări. | Corectura. |
-| **Merge** | Unirea a două branch-uri. La noi: PR-ul aprobat intră în `main` printr-un *merge commit*. | Lipești capitolul tău în cartea comună. |
+| **Review** | Un coleg citește și rulează schimbările din PR, comentează și aprobă sau cere schimbări. La noi e opțional. | Corectura. |
+| **Merge** | Unirea a două branch-uri. La noi: PR-ul cu CI verde intră în `main` printr-un *merge commit*. | Lipești capitolul tău în cartea comună. |
 | **Conflict** | Doi oameni au schimbat aceleași rânduri. Git nu știe ce să păstreze și te întreabă. | Doi editori au corectat aceeași frază diferit. |
 | **CI** | Verificări automate (GitHub Actions) care rulează la fiecare PR. | Un coleg robot care rulează testele în locul tău. |
 
