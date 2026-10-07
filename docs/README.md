@@ -20,7 +20,7 @@ Indexul tuturor documentelor. Începe cu **Pentru început**, apoi citește ce �
 | [data/README.md](../data/README.md) | Formatul fișierelor JSON din `data/` |
 | [metrics.md](metrics.md) | Metricile fixate înainte de v0.1, chestionarul SUS și scriptul de analiză |
 | [tools/log_backend/README.md](../tools/log_backend/README.md) | Backend-ul de log (Apps Script): ce păstrează, cum îl pornești, exportul și ștergerea datelor |
-| [.github/CODEOWNERS](../.github/CODEOWNERS) | Cine face review pentru fiecare folder |
+| [.github/CODEOWNERS](../.github/CODEOWNERS) | Proprietarii folderelor, cu regulile oprite: din 7 oct GitHub nu mai cere review-uri automat |
 | [.github/workflows/ci.yml](../.github/workflows/ci.yml) | CI: joburile `validate-data` și `gut-tests` |
 
 ## Licențe, confidențialitate, credite
@@ -40,7 +40,7 @@ Indexul tuturor documentelor. Începe cu **Pentru început**, apoi citește ce �
 | [01-instalare.md](ghid-git/01-instalare.md) | 1. Instalare și configurare |
 | [02-concepte.md](ghid-git/02-concepte.md) | 2. Conceptele de bază |
 | [03-primul-flux.md](ghid-git/03-primul-flux.md) | 3. Primul flux complet, pas cu pas |
-| [04-review.md](ghid-git/04-review.md) | 4. Review: cum citești și aprobi codul unui coleg |
+| [04-review.md](ghid-git/04-review.md) | 4. Review (opțional): cum citești și rulezi codul unui coleg |
 | [05-sincronizare-si-conflicte.md](ghid-git/05-sincronizare-si-conflicte.md) | 5. Sincronizare și conflicte |
 | [06-issues-si-board.md](ghid-git/06-issues-si-board.md) | 6. Issues, etichete, milestones și board |
 | [07-ci.md](ghid-git/07-ci.md) | 7. CI: verificările automate (GitHub Actions) |

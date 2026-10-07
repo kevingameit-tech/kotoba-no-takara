@@ -1,14 +1,14 @@
 # Contracts between modules (v0)
 
-> **Status: v0.1 draft.** Written by Kevin on 2026-10-05, updated on 2026-10-06, presented at the lab on 2026-10-12.
+> **Status: v0.3 draft.** Written by Kevin on 2026-10-05, updated on 2026-10-07, presented at the lab on 2026-10-12.
 > Items marked **PROPOSAL** are decided by the team vote on 2026-10-12 or by the owners before the freeze date.
 
 **Why this file exists.** Four people build four parts of one game at the same time. A contract fixes the names, signatures and data shapes that two parts use to talk to each other, so each person can work (and test with fakes) without waiting for the others.
 
 **How to change a contract.**
 
-- Before its freeze date: a normal pull request with 1 approval from the other side of the contract.
-- After its freeze date: a pull request with **2 approvals** (one from the other side), the `contract` label, and a line in the [changelog](#14-changelog). Code on both sides and the fakes (for example `FakeQuizEngine`) change in the same pull request.
+- Before its freeze date: a normal pull request, with the agreement of the other side of the contract (a comment in the pull request or a message in the team group).
+- After its freeze date: a pull request with the **written agreement of the other side** in the pull request (a comment such as "agreed" or "de acord"), the `contract` label, and a line in the [changelog](#14-changelog). Since 2026-10-07 GitHub needs no approval, only the automatic checks. Code on both sides and the fakes (for example `FakeQuizEngine`) change in the same pull request.
 
 ## Contents
 
@@ -65,7 +65,7 @@ Other options on the ballot: **B** 384x216 canvas_items; **C** 384x216 viewport 
 
 ## 3. Folders and ownership
 
-One owner per folder and per scene. Others change it only through an issue or with the owner's approval. `.github/CODEOWNERS` mirrors this table.
+One owner per folder and per scene. Others change it only through an issue or with the owner's agreement. `.github/CODEOWNERS` lists the same owners with every rule commented out: since 2026-10-07 a PR needs no approval, so GitHub does not request reviews automatically.
 
 | Path | Owner | Content |
 |---|---|---|
@@ -83,7 +83,7 @@ One owner per folder and per scene. Others change it only through an issue or wi
 | `docs/` | Kevin (`contracts.md`, `ghid-git/`), Ioana (`DEFINITION_OF_DONE.md`) | documentation |
 | `CONTRIBUTING.md`, `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/` | Ioana | contribution rules, PR and issue templates |
 | `tests/fakes/`, `.gutconfig.json` | Ioana | `FakeQuizEngine` and other fakes, GUT settings used by CI |
-| `README.md`, `LICENSE`, `.github/CODEOWNERS` | Kevin | front page, code licence, review owners |
+| `README.md`, `LICENSE`, `.github/CODEOWNERS` | Kevin | front page, code licence, owner list (rules off) |
 | `PRIVACY.md` | Kevin and Mariana | privacy note (RO/EN) |
 | `.github/workflows/` | Ioana | CI: jobs `validate-data` and `gut-tests` |
 | `project.godot` | small dedicated PRs only; Input Map and resolution: David; each autoload line: its owner | project settings |

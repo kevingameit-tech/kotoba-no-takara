@@ -107,7 +107,7 @@ Ai apăsat **Commit suggestion** sau **Update branch** pe GitHub? Pe branch-ul t
 
 ## PR: ce trebuie să conțină
 
-`Closes #N` · De ce (2 rânduri) · Cum testezi · Captură · Definition of Done bifat · 1 aprobare de la cineva care a rulat codul · CI verde · merge până duminică la 22:00
+`Closes #N` · De ce (2 rânduri) · Cum testezi · Captură · Definition of Done bifat · CI verde (fără aprobare; review opțional) · merge până duminică la 22:00
 
 ## Niciodată
 

@@ -111,7 +111,7 @@ Detalii:
 | **Când începi un card** | Te asignezi, îl muți în **In progress**, faci branch-ul. |
 | **Când deschizi PR-ul** | Muți cardul în **In review**. |
 | **Joi** | Check-in de 3 rânduri în chat-ul echipei: gata / urmează / blocat. Dacă ești blocat, scrii și în issue. |
-| **Duminică, 22:00** | Ce e în **In review** și are aprobare + CI verde se îmbină. Restul rămâne pentru săptămâna următoare. |
+| **Duminică, 22:00** | Ce e în **In review** și are CI verde se îmbină. Restul rămâne pentru săptămâna următoare. |
 
 Exemplu de check-in:
 
