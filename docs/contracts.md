@@ -1,6 +1,6 @@
 # Contracts between modules (v0)
 
-> **Status: v0.2 draft.** Written by Kevin on 2026-10-05, updated on 2026-10-07, presented at the lab on 2026-10-12.
+> **Status: v0.3 draft.** Written by Kevin on 2026-10-05, updated on 2026-10-07, presented at the lab on 2026-10-12.
 > Items marked **PROPOSAL** are decided by the team vote on 2026-10-12 or by the owners before the freeze date.
 
 **Why this file exists.** Four people build four parts of one game at the same time. A contract fixes the names, signatures and data shapes that two parts use to talk to each other, so each person can work (and test with fakes) without waiting for the others.
@@ -79,7 +79,7 @@ One owner per folder and per scene. Others change it only through an issue or wi
 | `autoload/` | one file per owner | section 4 |
 | `assets/` | David | sprites, tiles, sounds, music (CC0); every file gets a row in `CREDITS.md` |
 | `tests/unit/` | the owner of the code under test | `test_<topic>.gd`, extends `GutTest`; Ioana keeps the template |
-| `tools/` | Kevin; `tools/install_gut.*` Ioana | Python and shell tools; has a `.gdignore`, so Godot does not import it |
+| `tools/` | Kevin; `tools/install_gut.*` Ioana | Python and shell tools, and the log backend in `tools/log_backend/` (section 13); has a `.gdignore`, so Godot does not import it |
 | `docs/` | Kevin (`contracts.md`, `ghid-git/`), Ioana (`DEFINITION_OF_DONE.md`) | documentation |
 | `CONTRIBUTING.md`, `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/` | Ioana | contribution rules, PR and issue templates |
 | `tests/fakes/`, `.gutconfig.json` | Ioana | `FakeQuizEngine` and other fakes, GUT settings used by CI |
@@ -537,7 +537,9 @@ Rules:
 - **Only ids, numbers and fixed values.** No free text, no names, no typed text (in `"type"` mode only `correct` is logged). No persistent id.
 - `Settings.telemetry_enabled == false` means nothing is sent.
 - Events are sent in small batches (for example at the end of a battle) and also when the page loses focus.
-- Backend (PROPOSAL): Google Apps Script writing to a Google Sheet, POST with a `text/plain` body (no CORS preflight). Alternative: Supabase with an insert-only policy. The endpoint URL ends up in the public web build, so it must accept inserts only.
+- Backend (PROPOSAL, decision 7): Google Apps Script writing to a Google Sheet. Draft code, setup and limits: [`tools/log_backend/`](../tools/log_backend/README.md). Alternative: Supabase with an insert-only policy. The endpoint URL ends up in the public web build, so it must accept inserts only.
+- The client sends a POST with a `text/plain` body and **no other header**: any other header makes the browser send a CORS preflight first, which Apps Script does not answer. The client does not wait for the answer and does not retry: Google redirects the answer, and the rows are already written.
+- The backend keeps only the catalog fields and drops unknown ones. Every string must match the pattern of its field: lowercase snake_case ids (`h_ki`), `c<chapter>_...` for `encounter_id`, `q_` and digits for `qid`, lowercase romaji letters for `chosen`, the scene file name without folder or extension for `scene` (`"tokyo_town"`, not `"res://world/tokyo_town.tscn"`), 32 lowercase hex characters for `sid`. In `"type"` mode `chosen` must be `""`. So sentences, typed answers and formulas never reach the sheet.
 - Raw data never enters the repo. Only aggregated numbers go to `docs/data/`. Raw data is deleted by 2027-03-01 (see [PRIVACY.md](../PRIVACY.md)).
 
 ## 14. Changelog
@@ -547,3 +549,4 @@ Rules:
 | v0 | 2026-10-05 | First draft (Kevin) | to be presented on 2026-10-12 |
 | v0.1 | 2026-10-06 | Real data for stubs and one pool per regular enemy (section 7). QuizEngine details: `_init(bank)`, distractors, `explain`, boxes, choice mode only in v0.1 (section 8) | to be reviewed by Ioana |
 | v0.2 | 2026-10-07 | Section 12: `pretest` field. Section 13: event catalog v1 (`answer` gets `encounter_id` and `chosen` instead of `choice_index`; `posttest` repeats the pre-test with `pre_form` and `pre_score`; forms `c1_test_a` and `c1_test_b`; wire format). Sections 7 and 10: pool `c1_boss_tengu_phase2` for the Tengu's phase 2 | to be reviewed by Mariana (12, 13) and Ioana (7, 10) |
+| v0.3 | 2026-10-07 | Section 13: draft backend in `tools/log_backend/` (decision 7 still open), one header only, the client does not wait for the answer, strict pattern for every text field, empty `chosen` in `"type"` mode. Section 3: `tools/log_backend/` | to be reviewed by Mariana (13) |

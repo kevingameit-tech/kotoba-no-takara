@@ -41,6 +41,11 @@ jobs:
       - name: Test the log analysis
         run: python3 tools/test_analyze_logs.py
 
+      # Node.js comes with ubuntu-latest. The test uses only its standard library,
+      # and it also runs tools/analyze_logs.py on the rows that the backend stores.
+      - name: Test the log backend
+        run: node tools/log_backend/test_log_backend.js
+
       - name: Validate data/
         run: python3 tools/validate_data.py
 
