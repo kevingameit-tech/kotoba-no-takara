@@ -2,7 +2,7 @@
 
 | Membru | Rol | Utilizator GitHub | Tema de cercetare (10%) |
 |---|---|---|---|
-| Kevin | Lider și coordonare, review, tot conținutul japonez, QuizEngine, date, telemetrie (catalog și analiză) | de completat prin PR-ul de exercițiu | de ales până la 19 oct (propunere: retrieval practice și spaced repetition în jocurile educative) |
+| Kevin | Lider și coordonare, review, tot conținutul japonez, QuizEngine, date, telemetrie (catalog și analiză) | @kevingameit-tech | de ales până la 19 oct; candidate: A) retrieval practice și spaced repetition în jocurile educative, B) testarea cu utilizatori: ajung 5 oameni? |
 | David | Lumea jocului: hărți, Player, NPC, dialog, SceneRouter; asset-uri și credite; mentor Godot (1 h de Q&A pe săptămână) | de completat prin PR-ul de exercițiu | de ales până la 19 oct |
 | Ioana | Lupta (BattleModel, BattleScene), testele GUT, tot CI-ul, CONTRIBUTING și Definition of Done | de completat prin PR-ul de exercițiu | de ales până la 19 oct |
 | Mariana | UI, Theme, fonturi, limbă RO/EN, export web, TouchControls, salvare, clientul de telemetrie, accesibilitate | de completat prin PR-ul de exercițiu | de ales până la 19 oct |
