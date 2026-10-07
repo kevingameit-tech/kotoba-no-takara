@@ -186,6 +186,34 @@
         "k_wo",
         "k_n"
       ]
+    },
+    "c1_test_a": {
+      "items": [
+        "h_a",
+        "h_ki",
+        "h_shi",
+        "h_tsu",
+        "h_nu",
+        "h_hi",
+        "h_me",
+        "h_yu",
+        "h_ru",
+        "h_wa"
+      ]
+    },
+    "c1_test_b": {
+      "items": [
+        "h_o",
+        "h_ko",
+        "h_sa",
+        "h_chi",
+        "h_ne",
+        "h_ho",
+        "h_mu",
+        "h_yo",
+        "h_re",
+        "h_n"
+      ]
     }
   }
 }
