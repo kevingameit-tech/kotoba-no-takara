@@ -62,6 +62,322 @@
         "romaji": "Issho ni ganbarou!",
         "set_flag": "c1_intro_done"
       }
+    ],
+    "c1_lesson1_kenji": [
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Să începem cu primul rând: a, i, u, e, o.",
+          "en": "Let's start with the first row: a, i, u, e, o."
+        },
+        "ja": "あ い う え お",
+        "romaji": "a i u e o",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Japoneza are doar cinci vocale, aproape la fel ca în română.",
+          "en": "Japanese has only five vowels, short and clear."
+        },
+        "ja": "",
+        "romaji": "",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Acum rândul k: ka, ki, ku, ke, ko.",
+          "en": "Now the k row: ka, ki, ku, ke, ko."
+        },
+        "ja": "か き く け こ",
+        "romaji": "ka ki ku ke ko",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Atenție la あ și お: お are în plus un punct.",
+          "en": "Watch あ and お: お has an extra dot."
+        },
+        "ja": "",
+        "romaji": "",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Un kappa te așteaptă mai încolo. Arată-i ce ai învățat!",
+          "en": "A kappa is waiting up ahead. Show it what you've learned!"
+        },
+        "ja": "この さきで かっぱが まって いるよ。",
+        "romaji": "Kono saki de kappa ga matte iru yo.",
+        "set_flag": "c1_lesson1_done"
+      }
+    ],
+    "c1_lesson2_kenji": [
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Bravo! Ai trecut de kappa.",
+          "en": "Well done! You got past the kappa."
+        },
+        "ja": "すごい！ かっぱに かったね。",
+        "romaji": "Sugoi! Kappa ni katta ne.",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Rândul s: sa, shi, su, se, so. し se citește „shi”, ca «și».",
+          "en": "The s row: sa, shi, su, se, so. し is read “shi”."
+        },
+        "ja": "さ し す せ そ",
+        "romaji": "sa shi su se so",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Rândul t: ta, chi, tsu, te, to. ち e „chi”, ca «ci», iar つ e „tsu”.",
+          "en": "The t row: ta, chi, tsu, te, to. ち is “chi” and つ is “tsu”."
+        },
+        "ja": "た ち つ て と",
+        "romaji": "ta chi tsu te to",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "さ și ち seamănă: sunt ca în oglindă.",
+          "en": "さ and ち look alike: they are mirror images."
+        },
+        "ja": "",
+        "romaji": "",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Un kodama, un spirit al pădurii, te așteaptă. Nu-ți fie frică!",
+          "en": "A kodama, a forest spirit, is waiting for you. Don't be afraid!"
+        },
+        "ja": "こだまが まって いるよ。こわく ないよ！",
+        "romaji": "Kodama ga matte iru yo. Kowaku nai yo!",
+        "set_flag": "c1_lesson2_done"
+      }
+    ],
+    "c1_lesson3_kenji": [
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Excelent! Aproape jumătate e gata.",
+          "en": "Excellent! You are almost halfway there."
+        },
+        "ja": "もう すこしで はんぶんだよ。",
+        "romaji": "Mou sukoshi de hanbun da yo.",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Rândul n: na, ni, nu, ne, no.",
+          "en": "The n row: na, ni, nu, ne, no."
+        },
+        "ja": "な に ぬ ね の",
+        "romaji": "na ni nu ne no",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Rândul h: ha, hi, fu, he, ho. ふ e „fu”, cu un f moale.",
+          "en": "The h row: ha, hi, fu, he, ho. ふ is “fu”, with a soft f."
+        },
+        "ja": "は ひ ふ へ ほ",
+        "romaji": "ha hi fu he ho",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Rândul m: ma, mi, mu, me, mo.",
+          "en": "The m row: ma, mi, mu, me, mo."
+        },
+        "ja": "ま み む め も",
+        "romaji": "ma mi mu me mo",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Grijă la ぬ și め: ぬ are o buclă la capăt.",
+          "en": "Careful with ぬ and め: ぬ has a loop at the end."
+        },
+        "ja": "",
+        "romaji": "",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Un tanuki șiret s-a ascuns pe aici. Găsește-l!",
+          "en": "A sly tanuki is hiding around here. Find it!"
+        },
+        "ja": "たぬきが かくれて いるよ。さがして！",
+        "romaji": "Tanuki ga kakurete iru yo. Sagashite!",
+        "set_flag": "c1_lesson3_done"
+      }
+    ],
+    "c1_lesson4_kenji": [
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Bravo! Mai ai doar câteva rânduri.",
+          "en": "Great! Only a few rows left."
+        },
+        "ja": "あと すこしだよ！",
+        "romaji": "Ato sukoshi da yo!",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Rândul y are doar trei: ya, yu, yo.",
+          "en": "The y row has only three: ya, yu, yo."
+        },
+        "ja": "や ゆ よ",
+        "romaji": "ya yu yo",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Rândul r: ra, ri, ru, re, ro. Se pronunță ca un r ușor, aproape l.",
+          "en": "The r row: ra, ri, ru, re, ro. It sounds like a light r, almost an l."
+        },
+        "ja": "ら り る れ ろ",
+        "romaji": "ra ri ru re ro",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Și ultimele: wa, wo și n. を se citește „o”.",
+          "en": "And the last ones: wa, wo and n. を is read “o”."
+        },
+        "ja": "わ を ん",
+        "romaji": "wa wo n",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Al doilea kappa te așteaptă. După el vine altarul!",
+          "en": "The second kappa is waiting. After it comes the shrine!"
+        },
+        "ja": "もう いっぴきの かっぱが いるよ。",
+        "romaji": "Mou ippiki no kappa ga iru yo.",
+        "set_flag": "c1_lesson4_done"
+      }
+    ],
+    "c1_shrine_kenji": [
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Ai învățat toate cele 46 de hiragana. Sunt mândru de tine!",
+          "en": "You have learned all 46 hiragana. I'm proud of you!"
+        },
+        "ja": "ひらがなを ぜんぶ ならったね！",
+        "romaji": "Hiragana o zenbu naratta ne!",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "În altar te așteaptă Tengu. El întreabă toate literele.",
+          "en": "Tengu waits in the shrine. It asks about every letter."
+        },
+        "ja": "じんじゃで てんぐが まって いるよ。",
+        "romaji": "Jinja de tengu ga matte iru yo.",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Dacă greșești, nu-i nimic: citește explicația și încearcă din nou.",
+          "en": "If you make a mistake, that's fine: read the hint and try again."
+        },
+        "ja": "まちがえても だいじょうぶ！",
+        "romaji": "Machigaete mo daijoubu!",
+        "set_flag": ""
+      }
+    ],
+    "c1_tengu_before": [
+      {
+        "speaker": "tengu",
+        "text": {
+          "ro": "Ha! Un om venit prin portal vrea comoara mea?",
+          "en": "Ha! A human from the portal wants my treasure?"
+        },
+        "ja": "ふん！ にんげんが わしの たからを？",
+        "romaji": "Fun! Ningen ga washi no takara o?",
+        "set_flag": ""
+      },
+      {
+        "speaker": "tengu",
+        "text": {
+          "ro": "Arată-mi că știi toate literele mele!",
+          "en": "Show me you know all my letters!"
+        },
+        "ja": "わしの もじを ぜんぶ よんで みろ！",
+        "romaji": "Washi no moji o zenbu yonde miro!",
+        "set_flag": ""
+      }
+    ],
+    "c1_tengu_after": [
+      {
+        "speaker": "tengu",
+        "text": {
+          "ro": "Hm... Ai câștigat. Sulul hiragana e al tău.",
+          "en": "Hm... You win. The hiragana scroll is yours."
+        },
+        "ja": "むむ… まけた。ひらがなの まきものを やろう。",
+        "romaji": "Mumu... Maketa. Hiragana no makimono o yarou.",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Prima comoară e a ta! Ai citit toate literele.",
+          "en": "The first treasure is yours! You read every letter."
+        },
+        "ja": "ひとつめの たからだ！ よく がんばったね。",
+        "romaji": "Hitotsume no takara da! Yoku ganbatta ne.",
+        "set_flag": "c1_treasure_hiragana"
+      }
+    ],
+    "c1_end_kenji": [
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Următoarea comoară e în Kyoto, cu katakana.",
+          "en": "The next treasure is in Kyoto, with katakana."
+        },
+        "ja": "つぎは きょうとで カタカナだよ。",
+        "romaji": "Tsugi wa Kyouto de katakana da yo.",
+        "set_flag": ""
+      },
+      {
+        "speaker": "kenji",
+        "text": {
+          "ro": "Dar mai întâi, arată ce ai învățat: un test scurt de 10 litere.",
+          "en": "But first, show what you learned: a short test of 10 letters."
+        },
+        "ja": "さいごに ちいさな テストを しよう。",
+        "romaji": "Saigo ni chiisana tesuto o shiyou.",
+        "set_flag": "c1_done"
+      }
     ]
   }
 }
