@@ -215,7 +215,7 @@ Kana item:
 
 `script` is `"hira"` or `"kata"`. `row` is one of `a k s t n h m y r w`, or `n_final` for ん / ン. `romaji` is Hepburn; `alt_romaji` lists other accepted spellings for typing mode. Audio fields are added later (Could) with a `schema_version` bump.
 
-Pool ids frozen on 2026-10-19 for chapter 1: `c1_row_a`, `c1_row_k`, `c1_row_s`, `c1_row_t`, `c1_row_n`, `c1_row_h`, `c1_row_m`, `c1_row_y`, `c1_row_r`, `c1_row_w` (one row each, for practice and NPC lessons), `c1_rows_a_k`, `c1_rows_s_t`, `c1_rows_n_h_m`, `c1_rows_y_r_w` (the 4 regular enemies: each asks the new rows since the previous enemy, so battles cover all 46 hiragana before the boss) and `c1_boss_tengu`. Chapter 2 pool ids are fixed on 2026-11-16 (`c2_katakana_all` in `pools.json` is a draft until then). Scenes and encounters pass only pool ids, never item lists.
+Pool ids frozen on 2026-10-19 for chapter 1: `c1_row_a`, `c1_row_k`, `c1_row_s`, `c1_row_t`, `c1_row_n`, `c1_row_h`, `c1_row_m`, `c1_row_y`, `c1_row_r`, `c1_row_w` (one row each, for practice and NPC lessons), `c1_rows_a_k`, `c1_rows_s_t`, `c1_rows_n_h_m`, `c1_rows_y_r_w` (the 4 regular enemies: each asks the new rows since the previous enemy, so battles cover all 46 hiragana before the boss) `c1_boss_tengu` and `c1_boss_tengu_phase2` (the 17 hiragana with `confusable_ids`, for the Tengu's phase 2). Chapter 2 pool ids are fixed on 2026-11-16 (`c2_katakana_all` in `pools.json` is a draft until then). Scenes and encounters pass only pool ids, never item lists.
 
 **Real data for stubs (use it now).** Fakes and first scenes read these ids, which already exist in `data/`:
 
@@ -359,6 +359,7 @@ Between Kevin (`data/encounters.json`) and Ioana (enemy `.tres`). Frozen **2026-
     "c1_boss_tengu": {
       "chapter": 1,
       "pool_id": "c1_boss_tengu",
+      "phase2_pool_id": "c1_boss_tengu_phase2",
       "is_boss": true,
       "enemy": "res://battle/data/enemies/placeholder.tres"
     }
@@ -545,3 +546,4 @@ Rules:
 |---|---|---|---|
 | v0 | 2026-10-05 | First draft (Kevin) | to be presented on 2026-10-12 |
 | v0.1 | 2026-10-06 | Real data for stubs and one pool per regular enemy (section 7). QuizEngine details: `_init(bank)`, distractors, `explain`, boxes, choice mode only in v0.1 (section 8) | to be reviewed by Ioana |
+| v0.2 | 2026-10-07 | Section 12: `pretest` field. Section 13: event catalog v1 (`answer` gets `encounter_id` and `chosen` instead of `choice_index`; `posttest` repeats the pre-test with `pre_form` and `pre_score`; forms `c1_test_a` and `c1_test_b`; wire format). Sections 7 and 10: pool `c1_boss_tengu_phase2` for the Tengu's phase 2 | to be reviewed by Mariana (12, 13) and Ioana (7, 10) |
