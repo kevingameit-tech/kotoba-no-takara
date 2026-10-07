@@ -28,6 +28,7 @@
     "c1_boss_tengu": {
       "chapter": 1,
       "pool_id": "c1_boss_tengu",
+      "phase2_pool_id": "c1_boss_tengu_phase2",
       "is_boss": true,
       "enemy": "res://battle/data/enemies/placeholder.tres"
     }
