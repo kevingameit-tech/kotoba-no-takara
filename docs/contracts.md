@@ -455,6 +455,7 @@ Owner: Mariana. Frozen **2026-10-26**. Saving is Should for v0.1.
 | `flags` | Dictionary, String to bool | David (dialogue) |
 | `hp`, `max_hp` | int | Ioana |
 | `quiz` | Dictionary from `QuizEngine.get_state()` | Kevin |
+| `pretest` | Dictionary `{ "form": "A", "score": 6 }`, `{}` before the pre-test | Kevin (pre-test screen) |
 | `version` | int, save schema version | Mariana |
 | `build` | String, game version | Mariana |
 
@@ -500,21 +501,39 @@ Fields added by `Telemetry` to every event:
 | `platform` | `"web_desktop"` \| `"web_android"` \| `"web_ios"` \| `"desktop"` |
 | `lang` | `Settings.lang` |
 
-Catalog (PLACEHOLDER, fields may change until 2026-10-26):
+Wire format (PROPOSAL, frozen with the catalog): each event travels as one JSON object, the six fields above plus `event` (the name from the catalog) and `data` (its fields). A batch is a JSON array of such objects, sent as the `text/plain` body of one POST. The backend stores one row per event with the columns `received_at, v, build, sid, t_ms, platform, lang, event, data`, where `data` is kept as JSON text. The analysis reads exactly this export.
+
+```json
+{"v": 1, "build": "0.1.0", "sid": "9f2c41d0e7ab5c3812fe06a9d4b7c1e5", "t_ms": 51234, "platform": "web_ios", "lang": "ro",
+ "event": "answer", "data": {"encounter_id": "c1_kappa_1", "qid": "q_0003", "item_id": "h_ki", "mode": "choice",
+ "correct": false, "elapsed_ms": 3120, "chosen": "sa"}}
+```
+
+Catalog (v1, PROPOSAL until the freeze on 2026-10-26):
 
 | Event | Emitted by | When | `data` fields |
 |---|---|---|---|
 | `session_start` | Telemetry (Mariana) | after "Tap to start" | none |
-| `chapter_enter` | SceneRouter (David) | a chapter starts | `chapter` |
-| `answer` | BattleScene (Ioana), on `QuizEngine.answered` | every answer | `qid`, `item_id`, `mode`, `correct`, `elapsed_ms`, `choice_index` |
-| `battle_end` | SceneRouter (David), on `battle_finished` | end of every battle | `encounter_id`, `outcome`, `correct`, `wrong` |
-| `pretest` | pre-test screen (Kevin) | after the 10 pre-test items | `form` (`"A"` \| `"B"`), `score`, `n_items` |
-| `posttest` | post-test screen (Kevin) | after the Tengu | `form`, `score`, `n_items` |
-| `quit` | Telemetry (Mariana) | page hidden or closed | `scene` |
+| `chapter_enter` | SceneRouter (David) | a chapter starts, also after loading a save | `chapter` (int) |
+| `answer` | BattleScene (Ioana), on `QuizEngine.answered` | every answer in a battle | `encounter_id`, `qid`, `item_id`, `mode`, `correct` (bool), `elapsed_ms` (int), `chosen` |
+| `battle_end` | SceneRouter (David), on `battle_finished` | end of every battle | `encounter_id`, `outcome` (`"win"` \| `"lose"` \| `"flee"`), `correct` (int), `wrong` (int) |
+| `pretest` | pre-test screen (Kevin) | after the 10 pre-test items | `form` (`"A"` \| `"B"`), `score` (int, 0 to 10), `n_items` (10) |
+| `posttest` | post-test screen (Kevin) | after the Tengu | `form`, `score`, `n_items`, `pre_form`, `pre_score` (from `GameState.pretest`; `""` and `-1` if unknown) |
+| `quit` | Telemetry (Mariana) | page hidden or closed | `scene` (scene file name, for example `"tokyo_town"`) |
+
+`chosen` is the reading the player picked, one of the four choices (for example `"sa"` when the expected answer was `"ki"`). It shows which kana get confused. In `"type"` mode it stays `""`: typed text is never logged.
+
+Pre-test and post-test (decision 9):
+
+- Two forms of 10 hiragana, one kana from each row (ん counts with the w row) and no kana in both forms. Form A is the pool `c1_test_a` (あ き し つ ぬ ひ め ゆ る わ), form B is the pool `c1_test_b` (お こ さ ち ね ほ む よ れ ん). Each form has 6 kana from the confusable pairs.
+- The pre-test picks A or B at random; the post-test uses the other form, so nobody answers the same items twice.
+- The test screens use their own `QuizEngine`, show no correct answers and no `explain`, and never save its state.
+- The pre-test result goes into `GameState.pretest` (section 12). The `posttest` event repeats it, so one event holds both scores of one player: we compare before and after without any id that recognises the player.
+- The pool ids `c1_test_a` and `c1_test_b` freeze with the other chapter 1 pool ids on 2026-10-19.
 
 Rules:
 
-- **Only ids, numbers and fixed values.** No free text, no names, no typed answers (log `choice_index`, not the text). No persistent id.
+- **Only ids, numbers and fixed values.** No free text, no names, no typed text (in `"type"` mode only `correct` is logged). No persistent id.
 - `Settings.telemetry_enabled == false` means nothing is sent.
 - Events are sent in small batches (for example at the end of a battle) and also when the page loses focus.
 - Backend (PROPOSAL): Google Apps Script writing to a Google Sheet, POST with a `text/plain` body (no CORS preflight). Alternative: Supabase with an insert-only policy. The endpoint URL ends up in the public web build, so it must accept inserts only.
