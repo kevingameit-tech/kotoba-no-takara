@@ -487,6 +487,14 @@ Fields added by `Telemetry` to every event:
 | `platform` | `"web_desktop"` \| `"web_android"` \| `"web_ios"` \| `"desktop"` |
 | `lang` | `Settings.lang` |
 
+Wire format (PROPOSAL, frozen with the catalog): each event travels as one JSON object, the six fields above plus `event` (the name from the catalog) and `data` (its fields). A batch is a JSON array of such objects, sent as the `text/plain` body of one POST. The backend stores one row per event with the columns `received_at, v, build, sid, t_ms, platform, lang, event, data`, where `data` is kept as JSON text. The analysis reads exactly this export.
+
+```json
+{"v": 1, "build": "0.1.0", "sid": "9f2c41d0e7ab5c3812fe06a9d4b7c1e5", "t_ms": 51234, "platform": "web_ios", "lang": "ro",
+ "event": "answer", "data": {"encounter_id": "c1_kappa_1", "qid": "q_0003", "item_id": "h_ki", "mode": "choice",
+ "correct": false, "elapsed_ms": 3120, "chosen": "sa"}}
+```
+
 Catalog (v1, PROPOSAL until the freeze on 2026-10-26):
 
 | Event | Emitted by | When | `data` fields |
