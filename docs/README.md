@@ -18,6 +18,7 @@ Indexul tuturor documentelor. Începe cu **Pentru început**, apoi citește ce �
 |---|---|
 | [contracts.md](contracts.md) | Contractele dintre module: API, date, Input Map, autoload-uri, foldere (în engleză) |
 | [data/README.md](../data/README.md) | Formatul fișierelor JSON din `data/` |
+| [metrics.md](metrics.md) | Metricile fixate înainte de v0.1, chestionarul SUS și scriptul de analiză |
 | [.github/CODEOWNERS](../.github/CODEOWNERS) | Cine face review pentru fiecare folder |
 | [.github/workflows/ci.yml](../.github/workflows/ci.yml) | CI: joburile `validate-data` și `gut-tests` |
 
