@@ -65,7 +65,7 @@ python3 tools/analyze_logs.py export.csv --build 0.1 --form chestionar.csv --jso
 python3 tools/test_analyze_logs.py
 ```
 
-`export.csv` este exportul din backend, cu coloanele `v, build, sid, t_ms, platform, lang, event, data` (`data` ca text JSON). Merge și un fișier `.jsonl`, cu un eveniment pe rând. Exporturile brute rămân pe calculatorul lui Kevin, în afara repo-ului.
+`export.csv` este exportul din backend ([tools/log_backend/](../tools/log_backend/README.md)), cu coloanele `v, build, sid, t_ms, platform, lang, event, data` (`data` ca text JSON). Merge și un fișier `.jsonl`, cu un eveniment pe rând. Exporturile brute rămân pe calculatorul lui Kevin, în afara repo-ului.
 
 ## Ce arătăm la prezentarea finală
 
