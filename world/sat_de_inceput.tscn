@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://dspl0uctbyr6v"]
+
+[ext_resource type="Texture2D" uid="uid://cgrbjk3fnmepr" path="res://icon.svg" id="1_hc5vy"]
+[ext_resource type="PackedScene" uid="uid://c0ahuhx10h4cm" path="res://caractere/player.tscn" id="2_lcito"]
+[ext_resource type="PackedScene" uid="uid://d3rj2ia07t6v4" path="res://mecanici/schimbare_scene.tscn" id="3_uhwk6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(2186, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(152, 155)
+
+[node name="sat_de_inceput" type="Node2D" unique_id=598384192]
+
+[node name="pereti" type="Node" parent="." unique_id=1123233546]
+
+[node name="perete" type="StaticBody2D" parent="pereti" unique_id=536757444]
+
+[node name="perete" type="Sprite2D" parent="pereti/perete" unique_id=1808616892]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(672, -794)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete" unique_id=484035570]
+position = Vector2(697, -793)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="perete2" type="StaticBody2D" parent="pereti" unique_id=1537481936]
+position = Vector2(11, 2092)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete2" unique_id=2127732931]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(672, -794)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete2" unique_id=1646027314]
+position = Vector2(697, -793)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="perete3" type="StaticBody2D" parent="pereti" unique_id=1947289992]
+position = Vector2(-1147, -449)
+rotation = 1.5707964
+
+[node name="perete" type="Sprite2D" parent="pereti/perete3" unique_id=658198968]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(672, -794)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete3" unique_id=685098068]
+position = Vector2(697, -793)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="perete4" type="StaticBody2D" parent="pereti" unique_id=642706315]
+position = Vector2(961, -459)
+rotation = 1.5707964
+
+[node name="perete" type="Sprite2D" parent="pereti/perete4" unique_id=518017629]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(672, -794)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete4" unique_id=1757154808]
+position = Vector2(697, -793)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="case" type="Node" parent="." unique_id=1602248339]
+
+[node name="casa4" type="StaticBody2D" parent="case" unique_id=385358230]
+position = Vector2(839, -177)
+
+[node name="Sprite2D" type="Sprite2D" parent="case/casa4" unique_id=1168777940]
+modulate = Color(11.708403, 0, 0, 1)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="case/casa4" unique_id=1430715099]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="casa6" type="StaticBody2D" parent="case" unique_id=1208739035]
+position = Vector2(820, 366)
+
+[node name="Sprite2D" type="Sprite2D" parent="case/casa6" unique_id=1829876970]
+modulate = Color(11.708403, 0, 0, 1)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="case/casa6" unique_id=718614729]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="casa5" type="StaticBody2D" parent="case" unique_id=709063447]
+position = Vector2(836, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="case/casa5" unique_id=772317108]
+modulate = Color(11.708403, 0, 0, 1)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="case/casa5" unique_id=1068546142]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="casa3" type="StaticBody2D" parent="case" unique_id=1655556102]
+position = Vector2(188, 378)
+
+[node name="Sprite2D" type="Sprite2D" parent="case/casa3" unique_id=1050546275]
+modulate = Color(11.708403, 0, 0, 1)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="case/casa3" unique_id=1223323937]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="casa2" type="StaticBody2D" parent="case" unique_id=1764903255]
+position = Vector2(183, 119)
+
+[node name="Sprite2D" type="Sprite2D" parent="case/casa2" unique_id=626895727]
+modulate = Color(11.708403, 0, 0, 1)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="case/casa2" unique_id=987113867]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="casa1" type="StaticBody2D" parent="case" unique_id=763010405]
+position = Vector2(180, -180)
+
+[node name="Sprite2D" type="Sprite2D" parent="case/casa1" unique_id=1830945126]
+modulate = Color(11.708403, 0, 0, 1)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_hc5vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="case/casa1" unique_id=540643230]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="podea" type="Sprite2D" parent="." unique_id=520829785]
+modulate = Color(0.0018294923, 0.000605625, 0.002208008, 0.98800004)
+position = Vector2(688, 255)
+scale = Vector2(16.416672, 17.21875)
+texture = ExtResource("1_hc5vy")
+
+[node name="drum" type="Sprite2D" parent="." unique_id=1432978933]
+modulate = Color(18.892157, 5.422614, 0, 1)
+self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(508.5, 269)
+scale = Vector2(1.8828125, 15.421875)
+texture = ExtResource("1_hc5vy")
+
+[node name="player" parent="." unique_id=1825406463 instance=ExtResource("2_lcito")]
+
+[node name="schimbare_scene" parent="." unique_id=1078778212 instance=ExtResource("3_uhwk6")]
+position = Vector2(505, 1204)
+next_scene_path = "uid://db63faw31xrah"

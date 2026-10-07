@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d3rj2ia07t6v4"]
+
+[ext_resource type="Script" uid="uid://bgtfoxh8jp1" path="res://maps/iesire_sat.gd" id="1_kpvdr"]
+[ext_resource type="Texture2D" uid="uid://cgrbjk3fnmepr" path="res://icon.svg" id="2_oht2t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(358, 200)
+
+[node name="schimbare_scene" type="Area2D" unique_id=1078778212]
+z_index = 1
+script = ExtResource("1_kpvdr")
+
+[node name="fata_usii" type="Sprite2D" parent="." unique_id=1529941301]
+modulate = Color(0, 11.88096, 3.7728035, 1)
+scale = Vector2(2.8281248, 1.59375)
+texture = ExtResource("2_oht2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1495448309]
+shape = SubResource("RectangleShape2D_57qmd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
