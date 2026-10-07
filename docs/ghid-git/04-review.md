@@ -1,4 +1,4 @@
-# 4. Review: cum citești și aprobi codul unui coleg
+# 4. Review (opțional): cum citești și rulezi codul unui coleg
 
 > Timp: 20 minute de citit. Un review normal durează 15-30 de minute.
 
@@ -6,15 +6,17 @@
 
 - **Găsim greșeli înainte să ajungă în `main`.** `main` trebuie să meargă mereu, pentru că din el facem build-ul de pe telefon.
 - **Toți înțelegem tot jocul.** La prezentarea finală profesorul poate întreba pe oricine despre orice.
-- **Regula din Definition of Done**: fiecare PR are **1 aprobare de la cineva care a rulat codul**. Doar citit nu ajunge.
+- **Regula din 7 oct**: un PR intră pe `main` când trec verificările automate (CI), **fără aprobare**. Review-ul e opțional: îl ceri când vrei o a doua pereche de ochi, de exemplu când atingi fișierele altcuiva, un contract sau ceva greu de testat automat. Când faci review, **rulezi** codul: doar citit nu ajunge.
 
-Kevin face multe review-uri, dar **nu scrie și nu repară codul colegilor**. Dacă ceva trebuie schimbat, scrie comentariul, iar autorul face schimbarea. La fel faci și tu.
+Cine face review **nu scrie și nu repară codul colegului**. Dacă ceva trebuie schimbat, scrie comentariul, iar autorul face schimbarea.
 
 ## 4.2 Drumul unui PR
 
 ```mermaid
 flowchart TD
-    A["Autorul deschide PR-ul"] --> B["Review cerut de la proprietarul fișierelor<br/>(automat prin CODEOWNERS sau de mână)"]
+    A["Autorul deschide PR-ul"] --> R{"Vrea autorul<br/>un review?"}
+    R -->|"Nu"| J{"CI verde?"}
+    R -->|"Da"| B["Autorul cere review de mână<br/>(Reviewers, în dreapta PR-ului)"]
     B --> C["Reviewer-ul citește descrierea<br/>și rulează branch-ul local"]
     C --> D{"Merge cum scrie<br/>și respectă DoD?"}
     D -->|"Da"| E["Approve"]
@@ -23,10 +25,11 @@ flowchart TD
     F --> H["Autorul răspunde"]
     G --> I["Autorul face commit-uri noi<br/>și cere din nou review"]
     I --> C
-    H --> D
-    E --> J{"CI verde?"}
+    H --> J
+    E --> J
     J -->|"Da"| K["Autorul apasă<br/>Create a merge commit"]
-    J -->|"Nu"| I
+    J -->|"Nu"| L["Autorul repară<br/>cu commit-uri noi"]
+    L --> J
 ```
 
 ## 4.3 Pasul 1: citește descrierea
@@ -135,7 +138,7 @@ Sus în dreapta, în **Files changed**, apeși **Review changes** (în interfaț
 |---|---|
 | **Comment** | Ai doar sugestii sau întrebări. Nu blochezi și nu aprobi. |
 | **Approve** | Ai rulat codul, merge, respectă DoD. Poate avea și sugestii mici. |
-| **Request changes** | Există cel puțin un „Obligatoriu”. PR-ul nu se poate uni până nu aprobi după reparație. |
+| **Request changes** | Există cel puțin un „Obligatoriu”. Autorul repară, apoi îți cere din nou review. |
 
 Scrii un rezumat de 1-2 rânduri („Rulat pe desktop, merge. Doar cele 2 comentarii obligatorii.”) și apeși **Submit review**.
 
@@ -158,13 +161,13 @@ Apoi, câteva lucruri specifice proiectului:
 - [ ] **GDScript tipizat**: `var hp: int = 100`, `func take_damage(amount: int) -> void:`.
 - [ ] **Nume clare**, funcții scurte, comentarii în engleză doar unde codul nu se explică singur.
 - [ ] **Fără `print()` uitate**, fără cod comentat, fără fișiere în plus.
-- [ ] **Schimbă doar fișierele autorului**, sau proprietarul lor a aprobat.
+- [ ] **Schimbă doar fișierele autorului**, sau proprietarul lor a fost de acord (în PR sau în grup).
 - [ ] **Contractele** din `docs/contracts.md` sunt respectate: aceleași nume de funcții, semnale și chei.
 - [ ] **Fișiere în folderul corect** (fiecare zonă are proprietarul ei) și **nume `snake_case`**.
 - [ ] **Nimic din lista de alarmă** de la 4.4.
 - [ ] **CI verde.**
 
-Schimbările în contracte după înghețare cer **2 aprobări**, dintre care una de la cealaltă parte a contractului.
+O schimbare în contracte după înghețare intră doar cu **acordul scris al celeilalte părți** a contractului: un comentariu „de acord” în PR sau un mesaj în grupul echipei.
 
 ## 4.9 Când ești autorul
 
@@ -176,7 +179,7 @@ Schimbările în contracte după înghețare cer **2 aprobări**, dintre care un
 ## 4.10 Ritm
 
 - Răspunde la o cerere de review în **24 de ore** (maximum 48), chiar și doar cu „mă uit diseară”.
-- Demo-ul de luni folosește doar ce e îmbinat până **duminică la 22:00**. Un review întârziat blochează un coleg.
+- Demo-ul de luni folosește doar ce e îmbinat până **duminică la 22:00**. Un review cerut și întârziat blochează un coleg.
 
 ---
 

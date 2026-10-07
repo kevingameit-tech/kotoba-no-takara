@@ -184,7 +184,7 @@ CONFLICT (content): Merge conflict in world/maps/tokyo_town.tscn
 ```
 
 1. **Nu** deschide fișierul ca să ștergi semnele. **Nu** îl deschide nici în Godot cât timp are conflict.
-2. **Vorbește cu proprietarul scenei** (vezi `CODEOWNERS`). De obicei păstrezi versiunea din `main`, pentru că a trecut deja prin review.
+2. **Vorbește cu proprietarul scenei** (tabelul din `docs/contracts.md`, secțiunea 3). De obicei păstrezi versiunea din `main`, pentru că a trecut deja prin CI și e deja în joc.
 3. Păstrezi o parte:
 
    ```bash
@@ -229,7 +229,7 @@ Aceeași regulă pentru:
 
 Cel mai bun conflict e cel care nu apare:
 
-1. **Un proprietar pe scenă.** Fiecare folder are un proprietar în `.github/CODEOWNERS`:
+1. **Un proprietar pe scenă.** Fiecare folder are un proprietar (tabelul complet e în `docs/contracts.md`, secțiunea 3):
 
    | Folder | Proprietar |
    |---|---|

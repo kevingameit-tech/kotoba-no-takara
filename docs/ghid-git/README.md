@@ -14,7 +14,7 @@ Un manual scurt, în română, pentru cine n-a mai lucrat cu Git într-o echipă
 | 1 | [Instalare și configurare](01-instalare.md) | Git, cont GitHub, adresa noreply, autentificare, clonare | 30-45 min | 12 oct |
 | 2 | [Conceptele de bază](02-concepte.md) | Repo, commit, branch, remote, pull request, merge | 20 min | 12 oct |
 | 3 | [Primul flux complet](03-primul-flux.md) | De la issue la merge, cu comenzile exacte | 30 min | 12 oct |
-| 4 | [Review](04-review.md) | Cum rulezi, comentezi și aprobi un PR | 20 min | 19 oct |
+| 4 | [Review](04-review.md) | Opțional: cum rulezi și comentezi PR-ul unui coleg | 20 min | 19 oct |
 | 5 | [Sincronizare și conflicte](05-sincronizare-si-conflicte.md) | `git merge main`, conflicte pas cu pas, regula `.tscn` | 30 min | 19 oct |
 | 6 | [Issues și board](06-issues-si-board.md) | Șabloane, milestones, GitHub Projects, `Closes #N` | 15 min | 19 oct |
 | 7 | [CI](07-ci.md) | GitHub Actions: `validate-data` și `gut-tests`, X-ul roșu | 15 min | 19 oct |

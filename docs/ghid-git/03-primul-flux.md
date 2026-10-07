@@ -210,13 +210,13 @@ remote:      https://github.com/kevingameit-tech/kotoba-no-takara/pull/new/feat/
 | **Definition of Done** | bifezi ce e gata: scrii `x` între paranteze (`- [x]`) sau, după ce creezi PR-ul, dai click pe căsuță | lista e explicată în capitolul 4.8 |
 | **AI (opțional)** | o propoziție, dacă ai folosit AI | „am folosit AI pentru formula de daune” |
 
-5. **Reviewers** (coloana din dreapta): GitHub pune automat proprietarul fișierelor atinse, după `.github/CODEOWNERS` (doar după ce Kevin trece acolo username-urile voastre). Dacă ai schimbat doar fișierele tale, GitHub nu are pe cine să pună, pentru că nu poți fi reviewer la propriul PR. Așa că verifici mereu: alegi cel puțin un coleg care chiar va rula codul.
+5. **Reviewers** (coloana din dreapta): opțional. Din 7 oct un PR intră pe `main` când CI e verde, fără aprobare, iar GitHub nu mai pune pe nimeni automat (regulile din `.github/CODEOWNERS` sunt oprite). Alegi un coleg doar când vrei o a doua pereche de ochi, de exemplu când atingi fișierele altcuiva sau un contract.
 6. **Assignees**: tu.
 7. Apasă **Create pull request**.
 
-Nu e gata, dar vrei părere? Apasă săgeata de lângă buton, alege **Create draft pull request** și apasă butonul. Când e gata, apeși **Ready for review**. Atenție: la un PR draft, GitHub nu cere automat review de la proprietari.
+Nu e gata, dar vrei părere? Apasă săgeata de lângă buton, alege **Create draft pull request** și apasă butonul. Când e gata, apeși **Ready for review**. Un PR draft nu se poate îmbina.
 
-## Pasul 10. Așteaptă CI și review
+## Pasul 10. Așteaptă CI (și review-ul, dacă l-ai cerut)
 
 Pe pagina PR-ului, jos, vezi verificările:
 
@@ -224,7 +224,7 @@ Pe pagina PR-ului, jos, vezi verificările:
 - bifă verde: a trecut,
 - X roșu: a picat. Vezi [capitolul 7](07-ci.md).
 
-Reviewer-ul fie aprobă, fie cere schimbări (capitolul 4). Dacă cere schimbări:
+Dacă CI-ul pică sau reviewer-ul cere schimbări (capitolul 4), repari pe același branch:
 
 ```bash
 # tot pe feat/battle-hp-bar
@@ -233,19 +233,19 @@ git commit -m "fix(battle): update bar on hp_changed only"
 git push
 ```
 
-PR-ul se actualizează singur cu commit-ul nou. Nu deschizi PR nou. Răspunzi la fiecare comentariu (tab-ul **Conversation**), apeși **Resolve conversation** sub fiecare comentariu rezolvat, apoi ceri din nou review: în coloana din dreapta, la **Reviewers**, iconița cu săgeți rotunde de lângă numele reviewer-ului (**Re-request review**).
+PR-ul se actualizează singur cu commit-ul nou. Nu deschizi PR nou. Dacă ai avut review, răspunzi la fiecare comentariu (tab-ul **Conversation**), apeși **Resolve conversation** sub fiecare comentariu rezolvat, apoi ceri din nou review: în coloana din dreapta, la **Reviewers**, iconița cu săgeți rotunde de lângă numele reviewer-ului (**Re-request review**).
 
 Între timp au intrat alte PR-uri în `main` și GitHub arată un conflict? Vezi [capitolul 5](05-sincronizare-si-conflicte.md).
 
 ## Pasul 11. Merge
 
-Când ai **o aprobare** și **toate verificările verzi**, butonul de jos devine verde:
+Când **toate verificările sunt verzi**, butonul de jos devine verde (din 7 oct nu mai e nevoie de aprobare):
 
 1. Apeși **Merge pull request**. La noi singura variantă activă e **Create a merge commit**.
 2. Apeși **Confirm merge**.
 3. Apeși **Delete branch** (branch-ul de pe GitHub nu mai e necesar).
 
-Dacă butonul e gri, GitHub scrie dedesubt ce lipsește: aprobarea, CI verde sau rezolvarea unui conflict (capitolul 5).
+Dacă butonul e gri, GitHub scrie dedesubt ce lipsește: CI verde sau rezolvarea unui conflict (capitolul 5).
 
 Butonul îl apasă **autorul PR-ului**. Termenul: tot ce vrei să arăți la demo-ul de luni trebuie să fie îmbinat până **duminică la 22:00**.
 

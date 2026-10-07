@@ -83,7 +83,7 @@ Kevin face review și nu scrie codul colegilor. Utilizatorii GitHub și temele d
    git commit -m "feat(battle): add damage formula"
    ```
 4. Rulează testele (panoul GUT) și `python3 tools/validate_data.py` dacă ai atins `data/`. Apoi `git push -u origin feat/battle-damage` și deschide un Pull Request: completezi șablonul și scrii `Closes #N`.
-5. Un coleg rulează codul și aprobă, CI-ul e verde, apoi faci merge (merge commit). PR-urile săptămânii intră până duminică la 22:00.
+5. Când CI-ul e verde, faci merge (merge commit). Nu e nevoie de aprobare; dacă vrei o a doua pereche de ochi, ceri un review (opțional). PR-urile săptămânii intră până duminică la 22:00.
 
 Regulile complete sunt în [CONTRIBUTING.md](CONTRIBUTING.md). Dacă Git e nou pentru tine, începe cu ghidul pas cu pas: [docs/ghid-git/README.md](docs/ghid-git/README.md).
 

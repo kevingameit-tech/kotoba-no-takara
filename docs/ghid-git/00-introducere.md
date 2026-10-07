@@ -38,10 +38,10 @@ Le vei vedea explicate pe larg în capitolele următoare. Aici e doar lista:
 2. **Un branch pentru fiecare sarcină**, cu nume de forma `feat|fix|test|docs/<zonă>-<subiect>`, de exemplu `feat/battle-hp-bar`.
 3. **Mesaje de commit în stil Conventional Commits**, în engleză: `feat(battle): show player HP bar`.
 4. **Fiecare PR are**: `Closes #N`, 2 rânduri „De ce”, pașii „Cum testezi” și o captură de ecran (pentru logică fără ecran, rezultatul testelor GUT).
-5. **1 aprobare** de la cineva care a rulat codul, plus **CI verde**. Apoi merge commit (nu squash).
+5. **CI verde** (verificările automate), apoi merge commit (nu squash). Din 7 oct nu mai e nevoie de aprobare: review-ul e opțional și îl ceri când vrei o a doua pereche de ochi.
 6. **Commit-uri cu adresa ta noreply de la GitHub**, ca să conteze în statistici fără să-ți arăți e-mailul.
 7. **Nu faci merge de mână la fișiere `.tscn`.** Păstrezi o parte și refaci schimbarea în editor.
-8. **Un proprietar pentru fiecare scenă** (fișierul `.github/CODEOWNERS`).
+8. **Un proprietar pentru fiecare scenă** (tabelul din `docs/contracts.md`, secțiunea 3).
 9. **`project.godot` se schimbă doar în PR-uri mici, dedicate.**
 10. **Fără build-uri, log-uri sau date de la testeri în repo.**
 
@@ -57,7 +57,7 @@ flowchart TD
     D --> E["git add + git commit<br/>(de câte ori e nevoie)"]
     E --> F["git push -u origin feat/battle-hp-bar"]
     F --> G["Deschizi pull request pe GitHub<br/>cu Closes #12"]
-    G --> H{"CI verde și<br/>1 aprobare?"}
+    G --> H{"CI verde?"}
     H -->|"Nu"| I["Repari, faci commit, git push<br/>PR-ul se actualizează singur"]
     I --> H
     H -->|"Da"| J["Create a merge commit"]
@@ -71,8 +71,8 @@ flowchart TD
 2. Îți aduci `main` la zi și faci un branch nou din el.
 3. Lucrezi și faci commit-uri mici, des.
 4. Trimiți branch-ul pe GitHub (push) și deschizi un pull request.
-5. GitHub Actions rulează automat verificările (CI). Un coleg rulează codul tău și îl aprobă sau cere schimbări.
-6. Când e verde și aprobat, apeși merge. Issue-ul se închide singur.
+5. GitHub Actions rulează automat verificările (CI). Dacă vrei o a doua pereche de ochi, ceri unui coleg un review (opțional).
+6. Când CI e verde, apeși merge. Issue-ul se închide singur.
 7. Îți aduci din nou `main` la zi și iei următorul issue.
 
 ## Ritmul săptămânii
@@ -80,12 +80,12 @@ flowchart TD
 | Când | Ce se întâmplă |
 |---|---|
 | **Luni, la laborator** | 15 min demo pe telefon, 10 min retro, 20 min planificare pe board, apoi lucru în perechi. |
-| **Marți până sâmbătă** | Lucrezi pe issue-urile tale. Deschizi PR-uri. Faci review la PR-urile colegilor. |
+| **Marți până sâmbătă** | Lucrezi pe issue-urile tale. Deschizi PR-uri. Faci review când un coleg ți-l cere. |
 | **Joi** | Check-in de 3 rânduri: gata / urmează / blocat. |
 | **Duminică, 22:00** | PR-urile săptămânii sunt îmbinate în `main`. Ce nu e gata trece la săptămâna următoare. |
 | **Săptămânal** | David ține 1 oră de întrebări despre Godot. |
 
-Sfat: deschide PR-ul cel târziu sâmbătă, ca să aibă colegul timp să-l ruleze și să-l aprobe până duminică seara.
+Sfat: deschide PR-ul cel târziu sâmbătă, ca să ai timp să repari CI-ul dacă pică (și să-ți răspundă colegul, dacă i-ai cerut review).
 
 ## Cum citești ghidul
 

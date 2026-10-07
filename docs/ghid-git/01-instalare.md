@@ -62,7 +62,7 @@ Trebuie să vezi ceva de forma `git version 2.56.0` (numărul exact nu contează
 ## 1.2 Cont GitHub
 
 1. Dacă nu ai cont, îți faci unul pe [github.com/signup](https://github.com/signup).
-2. Alege un **username** pe care nu te deranjează să-l vezi în proiect. Apare în `CODEOWNERS`, în review-uri și în istoric.
+2. Alege un **username** pe care nu te deranjează să-l vezi în proiect. Apare în `docs/TEAM.md`, în review-uri și în istoric.
 3. Activează **autentificarea în doi pași (2FA)**: Settings → Password and authentication → Two-factor authentication. Folosește o aplicație de autentificare pe telefon și salvează codurile de recuperare într-un loc sigur. GitHub o cere oricum celor care contribuie la cod.
 4. Opțional: ca student poți cere gratuit [GitHub Student Developer Pack](https://education.github.com/pack). Nu e necesar pentru proiect.
 

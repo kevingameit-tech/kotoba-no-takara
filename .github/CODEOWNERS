@@ -1,25 +1,20 @@
 # CODEOWNERS for Kotoba no Takara
 #
-# What this file does: when a pull request changes a file, GitHub automatically
-# asks the owner of the matching path for a review. If several lines match the
-# same file, the LAST matching line wins, so general rules come first and
-# specific rules come last.
+# OFF since 7 Oct 2026 (Kevin's decision): a pull request enters main when the
+# automatic checks pass (validate-data and gut-tests), with no approval. An
+# active rule would make GitHub request a review from the owner of every
+# changed path, so every rule below stays commented out on purpose.
 #
-# Why every rule is commented out: GitHub accepts only real usernames of
-# collaborators with write access. A wrong name shows an error and the rule
-# does nothing. The names below (@utilizator-...) are placeholders.
+# The lines below only show who owns what, with placeholder names
+# (@utilizator-...). The ownership rules are in docs/contracts.md, section 3.
+# A review is optional: ask a colleague by hand when you want a second pair
+# of eyes.
 #
-# TODO (Kevin): after everyone has accepted the invitation and added their
-# username to docs/TEAM.md, replace each placeholder with the real @username
-# and remove the "# " at the start of each rule line.
-#
-# Do NOT turn on "Require review from Code Owners" for main. Most paths have
-# one owner, GitHub never lets authors approve their own pull request, and
-# main has no admin bypass, so every owner would be blocked on their own
-# folder. This file only requests the owner as reviewer automatically; the
-# merge rule stays "1 approval from someone who ran the code".
-#
-# The ownership rules are explained in docs/contracts.md, section 3.
+# How the file would work if the team turns it on again: when a pull request
+# changes a file, GitHub asks the owner of the matching path for a review. If
+# several lines match the same file, the LAST matching line wins, so general
+# rules come first and specific rules come last. GitHub accepts only real
+# usernames of collaborators with write access.
 
 # ---- Default: anything without a more specific owner ----
 # *                                @utilizator-kevin
@@ -62,12 +57,12 @@
 # /autoload/telemetry.gd           @utilizator-mariana
 # /export_presets.cfg              @utilizator-mariana
 
-# ---- Shared files: one approval from any listed owner is enough ----
+# ---- Shared files ----
 # Input Map and resolution live here; change it only in small dedicated PRs.
 # /project.godot                   @utilizator-david @utilizator-kevin
 
-# Tests in /tests/unit/ have no fixed owner: the owner of the code under test
-# reviews them (the default rule above applies).
+# Tests in /tests/unit/ have no fixed owner: they belong to the owner of the
+# code under test (the default rule above applies).
 
 # ---- This file ----
 # /.github/CODEOWNERS              @utilizator-kevin
