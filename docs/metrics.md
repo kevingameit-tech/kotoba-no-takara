@@ -31,7 +31,7 @@ Câștigul normalizat: (după minus înainte) împărțit la (10 minus înainte)
 - **60 de secunde.** Un răspuns de peste 60 s nu intră la timp.
 - **Sesiune, nu jucător.** `sid` trăiește doar în memorie: dacă cineva reîncarcă pagina, începe o sesiune nouă. Abandonul se numără pe sesiuni.
 - **Fără grup de control.** Pre-testul și post-testul arată dacă scorul crește, nu că jocul e singura cauză (chiar și pre-testul e deja o repetiție).
-- **Curba de învățare nu e un experiment.** Kana greșite revin mai des (cutiile Leitner), deci la întâlnirile 2 și 3 sunt mai multe kana grele.
+- **Curba de învățare nu e un experiment.** Nu avem grup de control, iar jucătorii care ajung la întâlnirile 4 și 5 nu sunt aceiași cu cei care se opresc devreme. Acum QuizEngine pune întrebările în ordine amestecată, fiecare kana o dată pe tură. Dacă intră recapitularea Leitner (Should, decidem pe 12 oct), kana greșite vor reveni mai des, deci la întâlnirile 2 și 3 vor fi mai multe kana grele.
 - **Un singur build.** Pentru raport filtrăm cu `--build`, de exemplu doar v0.1.
 - **Testul semnului** spune cât de probabil ar fi un raport atât de inegal între „au crescut” și „au scăzut” dacă jocul nu ar schimba nimic. Sub 0,05 spunem „diferență clară”, niciodată „dovedit”.
 - Un răspuns marcat greșit, deși citirea aleasă e cea corectă, nu intră la confuzii: scriptul îl arată separat, pentru că înseamnă o greșeală în codul care scrie evenimentul.
