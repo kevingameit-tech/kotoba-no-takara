@@ -1,6 +1,6 @@
 # Contracts between modules (v0)
 
-> **Status: v0.2 draft.** Written by Kevin on 2026-10-05, updated on 2026-10-07, presented at the lab on 2026-10-12.
+> **Status: v0.3 draft.** Written by Kevin on 2026-10-05, updated on 2026-10-07, presented at the lab on 2026-10-12.
 > Items marked **PROPOSAL** are decided by the team vote on 2026-10-12 or by the owners before the freeze date.
 
 **Why this file exists.** Four people build four parts of one game at the same time. A contract fixes the names, signatures and data shapes that two parts use to talk to each other, so each person can work (and test with fakes) without waiting for the others.
@@ -430,6 +430,24 @@ Between Kevin (`data/dialogue/*.json`) and David (`DialogueBox`). Frozen **2026-
 | `romaji` | String | reading of `ja`, may be `""` |
 | `set_flag` | String | when the line is shown, `GameState.flags[set_flag] = true`; `""` means none |
 
+Chapter 1 dialogues (PROPOSAL for David, frozen with this section on 2026-10-19). The lines are in `data/dialogue/ch1.json`. Where each dialogue starts (an NPC, a trigger area, or SceneRouter after a battle) is David's choice; the order, the ids and the flags are the contract.
+
+| # | Dialogue id | Plays | Sets flag | Then |
+|---|---|---|---|---|
+| 1 | `c1_intro_kenji` | at the start of chapter 1 | `c1_intro_done` | |
+| 2 | `c1_lesson1_kenji` | lesson: rows a and k | `c1_lesson1_done` | battle `c1_kappa_1` |
+| 3 | `c1_lesson2_kenji` | after `c1_kappa_1`; rows s and t | `c1_lesson2_done` | battle `c1_kodama_1` |
+| 4 | `c1_lesson3_kenji` | after `c1_kodama_1`; rows n, h and m | `c1_lesson3_done` | battle `c1_tanuki_1` |
+| 5 | `c1_lesson4_kenji` | after `c1_tanuki_1`; rows y, r, w and ん | `c1_lesson4_done` | battle `c1_kappa_2` |
+| 6 | `c1_shrine_kenji` | after `c1_kappa_2`, at the shrine | none | |
+| 7 | `c1_tengu_before` | in the shrine, before the boss | none | battle `c1_boss_tengu` |
+| 8 | `c1_tengu_after` | after the player beats the Tengu | `c1_treasure_hiragana` | |
+| 9 | `c1_end_kenji` | at the end of chapter 1 | `c1_done` | post-test (section 13), then chapter 2 |
+
+- A flag is set when its line is shown, so a save made after a dialogue keeps it. SceneRouter can use the flags to decide what comes next, for example the battle `c1_kodama_1` only after `c1_lesson2_done`.
+- Speakers in chapter 1: `kenji` and `tengu`, shown with the `ui.csv` keys `WORLD_SPEAKER_KENJI` and `WORLD_SPEAKER_TENGU`.
+- The town NPC dialogues (`c1_town_*`) come later in one pull request, after David's map.
+
 ```gdscript
 # world/dialogue/dialogue_box.gd (David)
 signal dialogue_finished(dialogue_id: String)
@@ -547,3 +565,4 @@ Rules:
 | v0 | 2026-10-05 | First draft (Kevin) | to be presented on 2026-10-12 |
 | v0.1 | 2026-10-06 | Real data for stubs and one pool per regular enemy (section 7). QuizEngine details: `_init(bank)`, distractors, `explain`, boxes, choice mode only in v0.1 (section 8) | to be reviewed by Ioana |
 | v0.2 | 2026-10-07 | Section 12: `pretest` field. Section 13: event catalog v1 (`answer` gets `encounter_id` and `chosen` instead of `choice_index`; `posttest` repeats the pre-test with `pre_form` and `pre_score`; forms `c1_test_a` and `c1_test_b`; wire format). Sections 7 and 10: pool `c1_boss_tengu_phase2` for the Tengu's phase 2 | to be reviewed by Mariana (12, 13) and Ioana (7, 10) |
+| v0.3 | 2026-10-07 | Section 11: order, ids and flags of the 9 dialogues of chapter 1 | to be agreed by David (11) |
