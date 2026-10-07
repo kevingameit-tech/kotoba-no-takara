@@ -199,6 +199,27 @@
         "h_n"
       ]
     },
+    "c1_boss_tengu_phase2": {
+      "items": [
+        "h_a",
+        "h_i",
+        "h_o",
+        "h_ki",
+        "h_ke",
+        "h_sa",
+        "h_chi",
+        "h_nu",
+        "h_ne",
+        "h_ha",
+        "h_ho",
+        "h_me",
+        "h_ri",
+        "h_ru",
+        "h_re",
+        "h_ro",
+        "h_wa"
+      ]
+    },
     "c2_katakana_all": {
       "items": [
         "k_a",
