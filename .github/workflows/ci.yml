@@ -38,6 +38,9 @@ jobs:
       - name: Test the validator
         run: python3 tools/test_validate_data.py
 
+      - name: Test the log analysis
+        run: python3 tools/test_analyze_logs.py
+
       - name: Validate data/
         run: python3 tools/validate_data.py
 
