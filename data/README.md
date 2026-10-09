@@ -70,7 +70,7 @@ Toate căile `enemy` arată deocamdată spre `res://battle/data/enemies/placehol
 
 ## dialogue/ch1.json
 
-Forma: `{ "schema_version": 1, "dialogues": { "<dialog_id>": [ replici ] } }`. Id-ul unui dialog arată așa: `c<capitol>_<loc>_<vorbitor>`, de exemplu `c1_intro_kenji`.
+Forma: `{ "schema_version": 1, "dialogues": { "<dialog_id>": [ replici ] } }`. Id-ul unui dialog arată așa: `c<capitol>_<loc>_<vorbitor>`, de exemplu `c1_intro_kenji`. Ordinea celor 9 dialoguri din capitolul 1 și steagurile lor sunt în [docs/contracts.md, secțiunea 11](../docs/contracts.md#11-dialogue).
 
 | Câmp | Tip | Ce înseamnă |
 |---|---|---|
