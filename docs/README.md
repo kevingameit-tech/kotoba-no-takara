@@ -19,6 +19,7 @@ Indexul tuturor documentelor. Începe cu **Pentru început**, apoi citește ce �
 | [contracts.md](contracts.md) | Contractele dintre module: API, date, Input Map, autoload-uri, foldere (în engleză) |
 | [data/README.md](../data/README.md) | Formatul fișierelor JSON din `data/` |
 | [metrics.md](metrics.md) | Metricile fixate înainte de v0.1, chestionarul SUS și scriptul de analiză |
+| [tools/log_backend/README.md](../tools/log_backend/README.md) | Backend-ul de log (Apps Script): ce păstrează, cum îl pornești, exportul și ștergerea datelor |
 | [.github/CODEOWNERS](../.github/CODEOWNERS) | Proprietarii folderelor, cu regulile oprite: din 7 oct GitHub nu mai cere review-uri automat |
 | [.github/workflows/ci.yml](../.github/workflows/ci.yml) | CI: joburile `validate-data` și `gut-tests` |
 
