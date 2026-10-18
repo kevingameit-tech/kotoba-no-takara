@@ -547,3 +547,7 @@ Rules:
 | v0 | 2026-10-05 | First draft (Kevin) | to be presented on 2026-10-12 |
 | v0.1 | 2026-10-06 | Real data for stubs and one pool per regular enemy (section 7). QuizEngine details: `_init(bank)`, distractors, `explain`, boxes, choice mode only in v0.1 (section 8) | to be reviewed by Ioana |
 | v0.2 | 2026-10-07 | Section 12: `pretest` field. Section 13: event catalog v1 (`answer` gets `encounter_id` and `chosen` instead of `choice_index`; `posttest` repeats the pre-test with `pre_form` and `pre_score`; forms `c1_test_a` and `c1_test_b`; wire format). Sections 7 and 10: pool `c1_boss_tengu_phase2` for the Tengu's phase 2 | to be reviewed by Mariana (12, 13) and Ioana (7, 10) |
+
+## Notă de revizuire - Ioana (Task #14)
+- Confirmat interacțiunea cu QuizEngine injectat prin setup().
+- Semnalul `battle_finished` va fi emis conform specificațiilor din secțiunea 9.
