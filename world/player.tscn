@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c0ahuhx10h4cm"]
+
+[ext_resource type="Texture2D" uid="uid://cgrbjk3fnmepr" path="res://icon.svg" id="1_3vs7y"]
+[ext_resource type="Script" uid="uid://bg4wbmqyxvtif" path="res://caractere/player.gd" id="1_fvrhf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 35.0
+height = 88.0
+
+[node name="player" type="CharacterBody2D" unique_id=1825406463 node_paths=PackedStringArray("pfoa")]
+z_index = 2
+script = ExtResource("1_fvrhf")
+pfoa = NodePath("pfoa")
+SPEED = 300.0
+SPRINT_SPEED = 750.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=174227399]
+scale = Vector2(0.546875, 0.703125)
+texture = ExtResource("1_3vs7y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=169826590]
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1390300085]
+position_smoothing_enabled = true
+position_smoothing_speed = 3.5
+
+[node name="pfoa" type="Sprite2D" parent="." unique_id=189232916]
+modulate = Color(17.99419, 18.892157, 0, 1)
+position = Vector2(21, -21)
+scale = Vector2(0.09375, 0.2890625)
+texture = ExtResource("1_3vs7y")
