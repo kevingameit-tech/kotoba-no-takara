@@ -3,6 +3,7 @@ extends GutTest
 
 const BattleModel = preload("res://battle/battle_model.gd")
 const Battler = preload("res://battle/battler.gd")
+const QuizEngine = preload("res://quiz/quiz_engine.gd")
 
 func test_initial_state() -> void:
 	var battle_model = BattleModel.new()
@@ -15,6 +16,13 @@ func test_setup_transitions_to_choose_action() -> void:
 	assert_eq(battle_model.current_state, 1, "După setup starea trebuie să fie CHOOSE_ACTION (1)")
 	assert_eq(battle_model.player_hp, 100, "Viața jucătorului trebuie resetată la 100")
 	assert_eq(battle_model.enemy_hp, 50, "Viața inamicului trebuie resetată la 50")
+
+func test_setup_with_real_quiz_engine() -> void:
+	var battle_model = BattleModel.new()
+	var quiz_engine = QuizEngine.new()
+	battle_model.setup(quiz_engine)
+	assert_eq(battle_model.quiz_engine, quiz_engine, "BattleModel trebuie să accepte și să stocheze o instanță reală de QuizEngine")
+	assert_eq(battle_model.current_state, 1, "După setup starea trebuie să fie CHOOSE_ACTION (1)")
 
 func test_choose_attack_goes_to_question() -> void:
 	var battle_model = BattleModel.new()
