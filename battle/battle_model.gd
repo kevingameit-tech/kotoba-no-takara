@@ -8,13 +8,13 @@ enum State { START, CHOOSE_ACTION, QUESTION, ENEMY_TURN, WIN, LOSE, FLEE }
 var current_state: State = State.START
 var player_hp: int = 100
 var enemy_hp: int = 50
-var quiz_engine: Node = null
+var quiz_engine: QuizEngine = null
 
 signal battle_finished(result: String)
 
 
 ## Inițializează lupta primind motorul de quiz și setările inițiale.
-func setup(p_quiz_engine: Node) -> void:
+func setup(p_quiz_engine: QuizEngine = null) -> void:
 	quiz_engine = p_quiz_engine
 	player_hp = 100
 	enemy_hp = 50
