@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Kotoba no Takara"
 config/version="0.1.0"
+run/main_scene="res://quiz/quiz_demo.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
