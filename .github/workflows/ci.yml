@@ -112,11 +112,15 @@ jobs:
           if total == 0 or failures or missing:
               sys.exit(1)
           EOF
-deploy-pages:
+
+  deploy-pages:
     name: Deploy to GitHub Pages
     needs: [validate-data, gut-tests]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       contents: read
       pages: write
@@ -135,12 +139,16 @@ deploy-pages:
           use-dotnet: false
           include-templates: true
 
+      - name: Import the project
+        run: |
+          timeout 300 godot --headless --import || echo "::warning::godot --import exited with code $?"
+
       - name: Export project to Web
         run: |
           mkdir -p build/web
           godot --headless --export-release "Web" build/web/index.html
 
-      - name: Deploy to GitHub Pages
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
@@ -148,6 +156,7 @@ deploy-pages:
         with:
           path: build/web
 
-      - name: Deploy to GitHub Pages Output
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
