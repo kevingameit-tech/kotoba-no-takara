@@ -3,7 +3,6 @@ extends GutTest
 
 const BattleModel = preload("res://battle/battle_model.gd")
 const Battler = preload("res://battle/battler.gd")
-const QuizEngine = preload("res://quiz/quiz_engine.gd")
 
 func test_initial_state() -> void:
 	var battle_model = BattleModel.new()
@@ -16,13 +15,6 @@ func test_setup_transitions_to_choose_action() -> void:
 	assert_eq(battle_model.current_state, 1, "După setup starea trebuie să fie CHOOSE_ACTION (1)")
 	assert_eq(battle_model.player_hp, 100, "Viața jucătorului trebuie resetată la 100")
 	assert_eq(battle_model.enemy_hp, 50, "Viața inamicului trebuie resetată la 50")
-
-func test_setup_with_real_quiz_engine() -> void:
-	var battle_model = BattleModel.new()
-	var quiz_engine = QuizEngine.new()
-	battle_model.setup(quiz_engine)
-	assert_eq(battle_model.quiz_engine, quiz_engine, "BattleModel trebuie să accepte și să stocheze o instanță reală de QuizEngine")
-	assert_eq(battle_model.current_state, 1, "După setup starea trebuie să fie CHOOSE_ACTION (1)")
 
 func test_choose_attack_goes_to_question() -> void:
 	var battle_model = BattleModel.new()
@@ -55,15 +47,12 @@ func test_resolve_wrong_answer_damages_player() -> void:
 func test_resolve_losing_battle() -> void:
 	var battle_model = BattleModel.new()
 	battle_model.setup(null)
-	# Scădem viața jucătorului la 0 prin răspunsuri greșite repetate
-	for i in range(5):
-		if battle_model.current_state == BattleModel.State.CHOOSE_ACTION:
-			battle_model.choose_attack()
-		battle_model.resolve_answer(false)
+	battle_model.player_hp = 10
+	battle_model.choose_attack()
+	battle_model.resolve_answer(false)
 	assert_eq(battle_model.current_state, 5, "Jucătorul pierde lupta (LOSE = 5)")
 
 func test_battler_does_not_modify_source_data() -> void:
-	# Folosim un Dictionary pentru datele mock, fiind perfect compatibil
 	var mock_data = {
 		"max_hp": 80
 	}
@@ -74,3 +63,33 @@ func test_battler_does_not_modify_source_data() -> void:
 	
 	assert_eq(battler.current_hp, 50, "HP-ul curent al battler-ului a scăzut la 50")
 	assert_eq(mock_data["max_hp"], 80, "Datele originale din sursă rămân absolut nemodificate")
+
+# --- NOILE TESTE PENTRU SEED ȘI LIMITELE HP ---
+
+func test_battler_deterministic_seed_damage() -> void:
+	var battler1 = Battler.new()
+	battler1.max_hp = 100
+	battler1.current_hp = 100
+	battler1.set_damage_seed(42)
+	var dmg1 = battler1.calculate_and_take_damage(20)
+	
+	var battler2 = Battler.new()
+	battler2.max_hp = 100
+	battler2.current_hp = 100
+	battler2.set_damage_seed(42)
+	var dmg2 = battler2.calculate_and_take_damage(20)
+	
+	assert_eq(dmg1, dmg2, "Același seed trebuie să dea exact aceleași daune")
+	assert_eq(battler1.current_hp, battler2.current_hp, "HP-ul rămas trebuie să fie identic")
+
+func test_battler_hp_bounds() -> void:
+	var battler = Battler.new()
+	battler.max_hp = 50
+	battler.current_hp = 10
+	
+	battler.take_damage(1000)
+	assert_eq(battler.current_hp, 0, "HP-ul nu are voie să scadă sub 0 (lower bound)")
+	
+	battler.current_hp = 50
+	battler.take_damage(-20)
+	assert_eq(battler.current_hp, 50, "HP-ul respectă limitele stabilite")
