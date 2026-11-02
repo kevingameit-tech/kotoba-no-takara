@@ -5,9 +5,11 @@ extends Control
 ## Run it alone: open quiz/quiz_demo.tscn in Godot and press F6.
 ##
 ## No UI words are written here (section 6): the player sees the kana, the romaji choices,
-## ✓ or ✗ with the expected answer, and the mnemonic from data/.
+## ○ or × with the expected answer, and the mnemonic from data/.
+## Kana come from fonts/dotgothic16_kana.ttf: the web build has no system fonts to fall back on.
 
 const POOL_ID: String = "c1_rows_a_k"
+const KANA_FONT: String = "res://fonts/dotgothic16_kana.ttf"
 const LANG: String = "ro"  # becomes Settings.lang when the Settings autoload exists
 const COLOR_BACKGROUND: Color = Color("14213d")
 const COLOR_BUTTON: Color = Color("25324d")
@@ -82,7 +84,7 @@ func _on_choice(choice: String) -> void:
 			_paint(button, COLOR_RIGHT)
 		elif button.text == choice:
 			_paint(button, COLOR_WRONG)
-	_feedback.text = ("✓  " if correct else "✗  ") + expected
+	_feedback.text = ("○  " if correct else "×  ") + expected
 	_feedback.add_theme_color_override("font_color", COLOR_RIGHT.lightened(0.3) if correct else COLOR_WRONG.lightened(0.3))
 	_explain.text = result.get("explain", {}).get(LANG, "")
 	_score_label.text = "%d / %d" % [_score, _total]
@@ -91,6 +93,7 @@ func _on_choice(choice: String) -> void:
 
 
 func _build_ui() -> void:
+	theme = _kana_theme()
 	var background: ColorRect = ColorRect.new()
 	background.color = COLOR_BACKGROUND
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -159,3 +162,13 @@ func _box(color: Color, border: Color = Color.TRANSPARENT) -> StyleBoxFlat:
 		box.border_color = border
 		box.set_border_width_all(2)
 	return box
+
+
+## The default font (Open Sans) has Latin with ă ș ț but no kana, ○ or →; DotGothic16 fills those in.
+func _kana_theme() -> Theme:
+	var font: FontVariation = FontVariation.new()
+	font.base_font = ThemeDB.fallback_font
+	font.fallbacks = [load(KANA_FONT)]
+	var kana_theme: Theme = Theme.new()
+	kana_theme.default_font = font
+	return kana_theme
