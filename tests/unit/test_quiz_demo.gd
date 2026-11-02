@@ -43,7 +43,7 @@ func test_first_question_shows_a_kana_and_four_choices() -> void:
 
 func test_right_answer_shows_a_check_the_mnemonic_and_the_score() -> void:
 	_button(_expected()).pressed.emit()
-	assert_string_starts_with(demo.find_child("Feedback", true, false).text, "✓")
+	assert_string_starts_with(demo.find_child("Feedback", true, false).text, "○")
 	assert_ne(demo.find_child("Explain", true, false).text, "", "the mnemonic from data/ is shown")
 	assert_eq(demo.find_child("Score", true, false).text, "1 / 1")
 	assert_true(demo.find_child("Next", true, false).visible)
@@ -53,7 +53,7 @@ func test_wrong_answer_shows_the_expected_reading() -> void:
 	var expected: String = _expected()
 	_button(_wrong_choice()).pressed.emit()
 	var feedback: String = demo.find_child("Feedback", true, false).text
-	assert_string_starts_with(feedback, "✗")
+	assert_string_starts_with(feedback, "×")
 	assert_string_contains(feedback, expected)
 	assert_eq(demo.find_child("Score", true, false).text, "0 / 1")
 
@@ -72,3 +72,10 @@ func test_next_shows_a_new_question_with_fresh_buttons() -> void:
 	for child in demo.find_child("Choices", true, false).get_children():
 		if not child.is_queued_for_deletion():
 			assert_false(child.disabled)
+
+
+func test_every_character_on_screen_has_a_glyph() -> void:
+	var font: Font = demo.theme.default_font
+	for text in ["けあいうえおかきくけこ", "○×→", "ăâîșț", "Zigzagul e o scară de evacuare"]:
+		for i in text.length():
+			assert_true(font.has_char(text.unicode_at(i)), "%s has a glyph" % text[i])
