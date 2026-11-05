@@ -376,6 +376,16 @@ Between Kevin (`data/encounters.json`) and Ioana (enemy `.tres`). Frozen **2026-
 | `enemy` | String | `res://` path of an `EnemyData` or `BossData` `.tres` |
 | `phase2_pool_id` | String, optional (PROPOSAL) | harder pool for boss phase 2 (Should) |
 
+Encounter ids frozen on 2026-10-19 for chapter 1, in the order the player meets them (all in `data/encounters.json` today, every enemy on `placeholder.tres` until Ioana's `.tres` files exist):
+
+| Encounter id | `pool_id` | Rows asked |
+|---|---|---|
+| `c1_kappa_1` | `c1_rows_a_k` | a, k (10 hiragana) |
+| `c1_kodama_1` | `c1_rows_s_t` | s, t (10) |
+| `c1_tanuki_1` | `c1_rows_n_h_m` | n, h, m (15) |
+| `c1_kappa_2` | `c1_rows_y_r_w` | y, r, w and ん (11) |
+| `c1_boss_tengu` (boss) | `c1_boss_tengu`, phase 2 `c1_boss_tengu_phase2` | all 46; phase 2 the 17 with `confusable_ids` |
+
 ```gdscript
 # battle/data/enemy_data.gd (Ioana)
 class_name EnemyData
