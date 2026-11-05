@@ -5,7 +5,8 @@ extends Control
 ## Run it alone: open quiz/quiz_demo.tscn in Godot and press F6.
 ##
 ## No UI words are written here (section 6): the player sees the kana, the romaji choices,
-## ✓ or ✗ with the expected answer, and the mnemonic from data/.
+## ○ or × with the expected answer, and the mnemonic from data/.
+## Kana come from fonts/dotgothic16_kana.ttf: the web build has no system fonts to fall back on.
 
 const POOL_ID: String = "c1_rows_a_k"
 const LANG: String = "ro"  # becomes Settings.lang when the Settings autoload exists
@@ -75,7 +76,7 @@ func _on_choice(choice: String) -> void:
 			button.add_theme_stylebox_override("disabled", QuizStyle.box(QuizStyle.RIGHT))
 		elif button.text == choice:
 			button.add_theme_stylebox_override("disabled", QuizStyle.box(QuizStyle.WRONG))
-	_feedback.text = ("✓  " if correct else "✗  ") + expected
+	_feedback.text = ("○  " if correct else "×  ") + expected
 	var feedback_color: Color = QuizStyle.RIGHT if correct else QuizStyle.WRONG
 	_feedback.add_theme_color_override("font_color", feedback_color.lightened(0.3))
 	_explain.text = result.get("explain", {}).get(LANG, "")
@@ -85,6 +86,7 @@ func _on_choice(choice: String) -> void:
 
 
 func _build_ui() -> void:
+	theme = QuizStyle.kana_theme()
 	add_child(QuizStyle.background())
 
 	var column: VBoxContainer = VBoxContainer.new()

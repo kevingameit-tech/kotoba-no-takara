@@ -6,6 +6,7 @@ Every external asset gets a row here in the same pull request that adds it.
 
 | Asset | Autor / Author | Licență / Licence | Link | Folosit în / Used in |
 |---|---|---|---|---|
+| DotGothic16 (subset: kana, ○ × →, punctuation) | The DotGothic16 Project Authors (Fontworks) | SIL OFL 1.1 (`fonts/OFL_DotGothic16.txt`) | https://github.com/fontworks-fonts/DotGothic16 | fonts/dotgothic16_kana.ttf, quiz/quiz_demo.gd |
 
 <!--
 Example row (delete this comment when the first real row is added):

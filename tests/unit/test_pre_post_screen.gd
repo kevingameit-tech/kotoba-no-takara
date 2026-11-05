@@ -162,3 +162,15 @@ func test_every_text_key_is_in_ui_csv_with_ro_and_en() -> void:
 		if rows.has(key):
 			assert_ne(rows[key][1].strip_edges(), "", "%s has EN" % key)
 			assert_ne(rows[key][2].strip_edges(), "", "%s has RO" % key)
+
+
+func test_every_kana_of_both_forms_has_a_glyph() -> void:
+	for kind in ["pre", "post"]:
+		var screen: Control = _screen(kind)
+		var font: Font = screen.theme.default_font
+		_node(screen, "Start").pressed.emit()
+		for i in PrePostTest.N_ITEMS:
+			var kana: String = _node(screen, "Kana").text
+			for j in kana.length():
+				assert_true(font.has_char(kana.unicode_at(j)), "%s has a glyph" % kana[j])
+			screen._on_choice(_expected(screen))

@@ -9,6 +9,7 @@ const RIGHT: Color = Color("2e8f5a")
 const WRONG: Color = Color("c2541f")
 const TEXT: Color = Color("f4efe6")
 const MUTED: Color = Color("a9b3c4")
+const KANA_FONT: String = "res://fonts/dotgothic16_kana.ttf"
 
 
 static func background() -> ColorRect:
@@ -50,3 +51,14 @@ static func box(color: Color, border: Color = Color.TRANSPARENT) -> StyleBoxFlat
 		style.border_color = border
 		style.set_border_width_all(2)
 	return style
+
+
+## The default font (Open Sans) has Latin with ă ș ț but no kana, ○ or →; DotGothic16 fills those in.
+## The web build has no system fonts, so every screen that shows kana sets this as its theme.
+static func kana_theme() -> Theme:
+	var font: FontVariation = FontVariation.new()
+	font.base_font = ThemeDB.fallback_font
+	font.fallbacks = [load(KANA_FONT)]
+	var theme: Theme = Theme.new()
+	theme.default_font = font
+	return theme

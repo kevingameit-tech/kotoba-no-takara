@@ -124,6 +124,7 @@ func _show(box: VBoxContainer) -> void:
 
 
 func _build_ui() -> void:
+	theme = QuizStyle.kana_theme()
 	add_child(QuizStyle.background())
 
 	_intro_box = _column("Intro", true)
