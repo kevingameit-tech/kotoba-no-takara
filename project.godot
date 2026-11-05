@@ -16,8 +16,8 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
-QuestionBank="*res://autoload/question_bank.gd"
 Settings="*uid://c15wytgvd88ak"
+QuestionBank="*res://autoload/question_bank.gd"
 
 [display]
 
