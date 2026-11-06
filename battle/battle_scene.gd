@@ -7,6 +7,7 @@ extends Control
 ## Contract: docs/contracts.md, secțiunea 9 și 10.
 
 signal battle_finished(result: Dictionary)
+signal phase_changed(new_phase: int)
 
 const KANA_FONT: String = "res://fonts/dotgothic16_kana.ttf"
 const COLOR_BG: Color = Color("14213d")
@@ -31,6 +32,11 @@ var enemy_battler: Battler = null
 
 ## Datele întâlnirii curente (din encounters.json).
 var encounter_data: Dictionary = {}
+
+## Gestiunea fazelor de boss (Faza 1 / Faza 2).
+var current_phase: int = 1
+var phase2_pool_id: String = ""
+var phase2_hp_ratio: float = 0.5
 
 ## Contoare pentru statistici.
 var correct_count: int = 0
@@ -92,6 +98,16 @@ func setup(encounter: Dictionary) -> void:
 		enemy_resource = load("res://battle/data/enemies/tengu.tres")
 	elif ResourceLoader.exists("res://battle/data/enemies/placeholder.tres"):
 		enemy_resource = load("res://battle/data/enemies/placeholder.tres")
+
+	# Inițializare parametri faza de boss
+	current_phase = 1
+	phase2_pool_id = str(encounter.get("phase2_pool_id", ""))
+	if phase2_pool_id == "" and is_boss and enc_id == "c1_boss_tengu":
+		phase2_pool_id = "c1_boss_tengu_phase2"
+	if enemy_resource != null and "phase2_hp_ratio" in enemy_resource:
+		phase2_hp_ratio = float(enemy_resource.phase2_hp_ratio)
+	else:
+		phase2_hp_ratio = 0.5
 
 	# 2. Inițializăm Battler-ul jucătorului și al inamicului.
 	player_battler = Battler.new()
@@ -192,6 +208,7 @@ func _on_choice_selected(chosen: String) -> void:
 		_feedback_label.add_theme_color_override("font_color", COLOR_RIGHT.lightened(0.3))
 		# Jucătorul lovește inamicul
 		enemy_battler.take_damage(player_battler.attack_power)
+		_check_boss_phase_transition()
 	else:
 		wrong_count += 1
 		_feedback_label.text = "×  Ai ales: " + chosen + "  |  Răspuns corect: " + expected
@@ -235,10 +252,33 @@ func _finish_battle(outcome: String) -> void:
 	emit_signal("battle_finished", final_result)
 
 
+## Verifică și aplică tranziția la Faza 2 dacă inamicul este un boss și HP-ul a scăzut sub prag.
+func check_boss_phase_transition() -> bool:
+	return _check_boss_phase_transition()
+
+
+func _check_boss_phase_transition() -> bool:
+	if current_phase == 1 and phase2_pool_id != "" and enemy_battler != null and enemy_battler.is_alive():
+		var threshold_hp: int = int(round(enemy_battler.max_hp * phase2_hp_ratio))
+		if enemy_battler.current_hp <= threshold_hp:
+			current_phase = 2
+			if engine != null:
+				engine.start(phase2_pool_id, rng_seed)
+			emit_signal("phase_changed", 2)
+			_feedback_label.text += "  ⚡ FAZA 2!"
+			_update_ui_state()
+			return true
+	return false
+
+
 ## Actualizează etichetele și barele de viață.
 func _update_ui_state() -> void:
 	if enemy_battler != null:
-		var boss_tag: String = " [BOSS]" if encounter_data.get("is_boss", false) else ""
+		var boss_tag: String = ""
+		if current_phase == 2:
+			boss_tag = " [FAZA 2]"
+		elif encounter_data.get("is_boss", false):
+			boss_tag = " [BOSS]"
 		var enemy_name: String = str(encounter_data.get("id", "Inamic")) + boss_tag
 		_enemy_info_label.text = "%s: %d / %d HP" % [enemy_name, enemy_battler.current_hp, enemy_battler.max_hp]
 		_enemy_hp_bar.max_value = enemy_battler.max_hp
