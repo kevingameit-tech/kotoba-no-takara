@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://db63faw31xrah"]
+
+[ext_resource type="Texture2D" uid="uid://cgrbjk3fnmepr" path="res://icon.svg" id="1_3t7re"]
+[ext_resource type="PackedScene" uid="uid://c0ahuhx10h4cm" path="res://caractere/player.tscn" id="2_0ki3y"]
+[ext_resource type="PackedScene" uid="uid://d3rj2ia07t6v4" path="res://mecanici/schimbare_scene.tscn" id="3_0ki3y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4qxa"]
+size = Vector2(2186, 118)
+
+[node name="Misiune 1" type="Node2D" unique_id=2117306381]
+
+[node name="podea" type="Node" parent="." unique_id=1858980953]
+
+[node name="Sprite2D" type="Sprite2D" parent="podea" unique_id=1816648267]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(730.5, 282.5)
+rotation = -0.14256378
+scale = Vector2(12.4140625, 5.4140625)
+texture = ExtResource("1_3t7re")
+
+[node name="Sprite2D2" type="Sprite2D" parent="podea" unique_id=252617363]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(1966, 176)
+scale = Vector2(12.4140625, 5.4140625)
+texture = ExtResource("1_3t7re")
+
+[node name="Sprite2D3" type="Sprite2D" parent="podea" unique_id=2099022669]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(3085.0002, -141.99982)
+rotation = -0.49933526
+scale = Vector2(12.414063, 5.4140625)
+texture = ExtResource("1_3t7re")
+
+[node name="Sprite2D4" type="Sprite2D" parent="podea" unique_id=1279705177]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(4044, -432)
+scale = Vector2(12.4140625, 5.4140625)
+texture = ExtResource("1_3t7re")
+
+[node name="Sprite2D5" type="Sprite2D" parent="podea" unique_id=239969071]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(4387.0005, 44.000027)
+rotation = 1.8272634
+scale = Vector2(12.4140625, 5.414062)
+texture = ExtResource("1_3t7re")
+
+[node name="Sprite2D6" type="Sprite2D" parent="podea" unique_id=835487836]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(4471.9995, 1161.0002)
+rotation = 1.113752
+scale = Vector2(12.4140625, 5.4140625)
+texture = ExtResource("1_3t7re")
+
+[node name="Sprite2D7" type="Sprite2D" parent="podea" unique_id=1247600006]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(5156, 1706)
+scale = Vector2(12.4140625, 5.4140625)
+texture = ExtResource("1_3t7re")
+
+[node name="Sprite2D8" type="Sprite2D" parent="podea" unique_id=426165627]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(6347, 1706)
+scale = Vector2(12.4140625, 5.4140625)
+texture = ExtResource("1_3t7re")
+
+[node name="Sprite2D9" type="Sprite2D" parent="podea" unique_id=453256847]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(7554, 1713)
+scale = Vector2(12.4140625, 5.4140625)
+texture = ExtResource("1_3t7re")
+
+[node name="Sprite2D10" type="Sprite2D" parent="podea" unique_id=739808643]
+modulate = Color(0, 11.431173, 1.632541, 1)
+position = Vector2(8861, 1717)
+scale = Vector2(12.4140625, 5.4140625)
+texture = ExtResource("1_3t7re")
+
+[node name="pereti" type="Node" parent="." unique_id=2079848420]
+
+[node name="perete" type="StaticBody2D" parent="pereti" unique_id=1849984773]
+position = Vector2(-119.99998, 381)
+rotation = -1.795709
+scale = Vector2(0.3225937, 1)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete" unique_id=1912361867]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete" unique_id=1294969859]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete2" type="StaticBody2D" parent="pereti" unique_id=1152539905]
+position = Vector2(1052, 623.99994)
+rotation = -3.2026744
+
+[node name="perete" type="Sprite2D" parent="pereti/perete2" unique_id=1402606805]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete2" unique_id=1156457310]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete3" type="StaticBody2D" parent="pereti" unique_id=1301839807]
+position = Vector2(857, -88)
+rotation = -0.12216348
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete3" unique_id=843635674]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete3" unique_id=1346061088]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete4" type="StaticBody2D" parent="pereti" unique_id=954796390]
+position = Vector2(2975, 347.00006)
+rotation = 2.9041874
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete4" unique_id=1507458159]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete4" unique_id=1225390212]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete5" type="StaticBody2D" parent="pereti" unique_id=1522758566]
+position = Vector2(2690, -462.00006)
+rotation = 2.8080914
+
+[node name="perete" type="Sprite2D" parent="pereti/perete5" unique_id=836029534]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete5" unique_id=557800002]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete6" type="StaticBody2D" parent="pereti" unique_id=2049017582]
+position = Vector2(4004, -771.00006)
+rotation = -3.2026744
+
+[node name="perete" type="Sprite2D" parent="pereti/perete6" unique_id=956689575]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete6" unique_id=1921015062]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete7" type="StaticBody2D" parent="pereti" unique_id=707413494]
+position = Vector2(3865, 427.99994)
+rotation = -1.3685538
+scale = Vector2(0.30897582, 1)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete7" unique_id=1792323486]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete7" unique_id=1080376185]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete8" type="StaticBody2D" parent="pereti" unique_id=1891506751]
+position = Vector2(4085.0002, 1375.9999)
+rotation = -1.9506955
+scale = Vector2(0.76825315, 1)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete8" unique_id=349031596]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete8" unique_id=2113512041]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete9" type="StaticBody2D" parent="pereti" unique_id=199734158]
+position = Vector2(4800.9995, 983.9999)
+rotation = -1.9506955
+scale = Vector2(0.382069, 1)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete9" unique_id=304876557]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete9" unique_id=1081292061]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete10" type="StaticBody2D" parent="pereti" unique_id=2006457560]
+position = Vector2(4789, -60.99997)
+rotation = -1.3685538
+scale = Vector2(0.7721472, 1)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete10" unique_id=416771772]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete10" unique_id=1493923954]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete11" type="StaticBody2D" parent="pereti" unique_id=1878935770]
+position = Vector2(7020.9995, 2050)
+rotation = 0.0037984923
+scale = Vector2(2.4813573, 0.99999994)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete11" unique_id=346610527]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete11" unique_id=197609331]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete12" type="StaticBody2D" parent="pereti" unique_id=1652627743]
+position = Vector2(7434.9995, 1294.9998)
+rotation = 0.0037984923
+scale = Vector2(2.3230321, 0.99999994)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete12" unique_id=2106047383]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete12" unique_id=801485034]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="perete13" type="StaticBody2D" parent="pereti" unique_id=2049981945]
+position = Vector2(9681.999, 1693.0001)
+rotation = -1.5865333
+scale = Vector2(0.30897582, 1)
+
+[node name="perete" type="Sprite2D" parent="pereti/perete13" unique_id=2068109133]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(4.743225, 8.803528)
+scale = Vector2(16.882813, 1)
+texture = ExtResource("1_3t7re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pereti/perete13" unique_id=460212003]
+position = Vector2(4.5966797, 18.651367)
+shape = SubResource("RectangleShape2D_a4qxa")
+
+[node name="player" parent="." unique_id=1825406463 instance=ExtResource("2_0ki3y")]
+position = Vector2(324, 325)
+
+[node name="schimbare_scene" parent="." unique_id=1078778212 instance=ExtResource("3_0ki3y")]
+position = Vector2(-19, 389)
+rotation = 1.3222892
+next_scene_path = "uid://dspl0uctbyr6v"
