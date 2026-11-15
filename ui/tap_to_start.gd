@@ -80,5 +80,7 @@ func _on_gui_input(event: InputEvent) -> void:
 func unlock_and_start() -> void:
 	# Unlock audio bus
 	AudioServer.set_bus_mute(0, false)
+	if has_node("/root/Telemetry"):
+		get_node("/root/Telemetry").log_event("session_start")
 	started.emit()
 	queue_free()
