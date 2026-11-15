@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://b6d7m3cdr710o"]
 
-[ext_resource type="Script" path="res://quiz/quiz_demo.gd" id="1_demo"]
+[ext_resource type="Script" uid="uid://bomaind2ihib1" path="res://quiz/quiz_demo.gd" id="1_demo"]
 
-[node name="QuizDemo" type="Control"]
+[node name="QuizDemo" type="Control" unique_id=1025895123]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
