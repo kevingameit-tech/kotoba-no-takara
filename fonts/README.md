@@ -3,7 +3,8 @@
 **Proprietar:** Mariana.
 
 - Aici stau fonturile jocului. Lângă fiecare font stă licența lui (`OFL.txt`).
-- Propunere: Pixelify Sans pentru română și engleză, DotGothic16 pentru kana și kanji.
+- Pixelify Sans pentru română și engleză (`PixelifySans-VariableFont_wght.ttf`, licență `OFL_PixelifySans.txt`), DotGothic16 pentru kana și kanji.
+- Configurat în `res://ui/theme.tres`: Pixelify Sans este fontul de bază, iar DotGothic16 (`dotgothic16_kana.ttf`) este fallback.
 - DotGothic16 nu are ă, ș, ț, deci textul românesc rămâne pe Pixelify Sans.
 - Dacă folosim un subset de font, îl refacem când apar caractere noi în `data/` sau `i18n/`.
 - Contract: [docs/contracts.md](../docs/contracts.md), secțiunea „Fonts”.

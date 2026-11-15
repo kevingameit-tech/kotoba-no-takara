@@ -1,0 +1,11 @@
+[gd_resource type="Theme" format=3]
+
+[ext_resource type="FontFile" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="1_jf26r"]
+[ext_resource type="FontFile" path="res://fonts/dotgothic16_kana.ttf" id="2_6lx7k"]
+
+[sub_resource type="FontVariation" id="FontVariation_iqtc0"]
+fallbacks = Array[Font]([ExtResource("2_6lx7k")])
+base_font = ExtResource("1_jf26r")
+
+[resource]
+default_font = SubResource("FontVariation_iqtc0")

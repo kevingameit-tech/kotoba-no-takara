@@ -31,6 +31,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
+[gui]
+
+theme/custom="res://ui/theme.tres"
+
 [input]
 
 move_up={
