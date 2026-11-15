@@ -17,8 +17,10 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
+Settings="*res://autoload/settings.gd"
 QuestionBank="*res://autoload/question_bank.gd"
 SaveManager="*res://autoload/save_manager.gd"
+Telemetry="*res://autoload/telemetry.gd"
 
 [display]
 
@@ -30,6 +32,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
+[gui]
+
+theme/custom="res://ui/theme.tres"
 
 [input]
 
