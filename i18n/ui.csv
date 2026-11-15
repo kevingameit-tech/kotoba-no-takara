@@ -3,6 +3,18 @@ MENU_NEW_GAME,New Game,Joc Nou
 MENU_CONTINUE,Continue,Continuă
 MENU_SETTINGS,Settings,Setări
 MENU_TAP_TO_START,Tap to start,Atinge pentru a începe
+MENU_PAUSE,Pause,Pauză
+MENU_QUIT,Quit,Ieșire
+MENU_LANGUAGE,Language,Limbă
+MENU_MUSIC_VOLUME,Music Volume,Volum Muzică
+MENU_SFX_VOLUME,SFX Volume,Volum Efecte
+MENU_TEXT_SIZE,Text Size,Mărimea Textului
+MENU_TEXT_SIZE_NORMAL,Normal,Normal
+MENU_TEXT_SIZE_LARGE,Large,Mare
+MENU_TELEMETRY,Game Statistics,Statistici de joc
+MENU_TELEMETRY_DESC,Send anonymous stats to help improve the game,Trimite statistici fără date personale pentru îmbunătățirea jocului
+MENU_LANG_RO,Română,Română
+MENU_LANG_EN,English,English
 UI_OK,OK,OK
 UI_BACK,Back,Înapoi
 UI_ROTATE_DEVICE,Please rotate your device to landscape,Te rugăm să rotești telefonul în modul peisaj
