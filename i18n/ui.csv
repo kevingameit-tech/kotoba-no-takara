@@ -9,3 +9,9 @@ UI_PRIVACY_NOTICE,"No personal data is stored. Statistics can be disabled in Set
 WORLD_PRESS_INTERACT,Press to interact,Apasă pentru interacțiune
 WORLD_SPEAKER_KENJI,Kenji,Kenji
 BATTLE_FLEE,Flee,Fugi
+UI_PRETEST_TITLE,Before we start: a short test,Înainte să începem: un test scurt
+UI_PRETEST_INTRO,"10 Japanese letters, one at a time. Pick the reading you think is right, or guess. You will not see the answers and it does not count in the game.","10 litere japoneze, pe rând. Alege citirea care crezi că e corectă sau ghicește. Nu vezi răspunsurile și nu contează în joc."
+UI_POSTTEST_TITLE,The final test,Testul final
+UI_POSTTEST_INTRO,"10 letters again, other ones than at the start. Pick the reading you think is right.","Din nou 10 litere, altele decât la început. Alege citirea care crezi că e corectă."
+UI_TEST_START,Start,Începe
+UI_TEST_DONE,Thank you! Your answers show us what the game teaches.,Mulțumim! Răspunsurile tale ne arată ce te învață jocul.
