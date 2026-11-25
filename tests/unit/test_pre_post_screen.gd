@@ -1,7 +1,8 @@
 extends GutTest
 ## Tests for quiz/pre_post_screen.gd. The screen gets its own QuestionBank, loaded from data/.
-## Telemetry and GameState are not written yet, so these tests put small fakes under /root
-## with the same names, and remove them afterwards.
+## These tests put small fakes of Telemetry and GameState under /root with the same names.
+## When the real autoloads exist, they step aside during the test and come back afterwards
+## (at the same place in the autoload order).
 
 const SEED: int = 11
 
@@ -22,6 +23,8 @@ class FakeGameState:
 var bank: Node
 var telemetry: FakeTelemetry
 var game_state: FakeGameState
+## The real autoloads that stepped aside: [node, index under /root].
+var _parked: Array = []
 
 
 func before_each() -> void:
@@ -36,12 +39,17 @@ func after_each() -> void:
 		if is_instance_valid(fake):
 			fake.get_parent().remove_child(fake)
 			fake.free()
+	for entry in _parked:
+		get_tree().root.add_child(entry[0])
+		get_tree().root.move_child(entry[0], entry[1])
+	_parked.clear()
 
 
 func _add_fake(node: Node, node_name: String) -> Node:
-	if get_tree().root.has_node(node_name):
-		node.free()
-		return null
+	var real: Node = get_tree().root.get_node_or_null(node_name)
+	if real != null:
+		_parked.append([real, real.get_index()])
+		get_tree().root.remove_child(real)
 	node.name = node_name
 	get_tree().root.add_child(node)
 	return node
