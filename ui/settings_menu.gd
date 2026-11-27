@@ -18,6 +18,7 @@ var music_val_label: Label
 var sfx_title_label: Label
 var slider_sfx: HSlider
 var sfx_val_label: Label
+var iphone_audio_hint_label: Label
 var text_size_title_label: Label
 var btn_size_normal: Button
 var btn_size_large: Button
@@ -170,6 +171,13 @@ func _build_ui() -> void:
 	slider_sfx.value_changed.connect(_on_sfx_slider_changed)
 	sfx_box.add_child(slider_sfx)
 
+	iphone_audio_hint_label = Label.new()
+	iphone_audio_hint_label.name = "IPhoneAudioHint"
+	iphone_audio_hint_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	iphone_audio_hint_label.add_theme_font_size_override("font_size", 10)
+	iphone_audio_hint_label.add_theme_color_override("font_color", Color(0.70, 0.72, 0.80, 0.75))
+	sfx_box.add_child(iphone_audio_hint_label)
+
 	# 4. Secțiunea Mărimea Textului
 	var size_box := VBoxContainer.new()
 	size_box.add_theme_constant_override("separation", 4)
@@ -258,6 +266,8 @@ func _update_text() -> void:
 	check_telemetry.text = tr("MENU_TELEMETRY")
 	telemetry_desc_label.text = tr("MENU_TELEMETRY_DESC")
 	btn_back.text = tr("UI_BACK")
+	if iphone_audio_hint_label != null:
+		iphone_audio_hint_label.text = tr("UI_IPHONE_SILENT_HINT")
 
 
 func _update_lang_buttons_state(current_lang: String) -> void:

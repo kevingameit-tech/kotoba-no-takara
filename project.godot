@@ -15,6 +15,10 @@ config/version="0.1.0"
 run/main_scene="res://quiz/quiz_demo.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 Settings="*res://autoload/settings.gd"

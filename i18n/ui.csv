@@ -22,6 +22,7 @@ UI_BACK,Back,Înapoi
 UI_ROTATE_DEVICE,Please rotate your device to landscape,Te rugăm să rotești telefonul în modul peisaj
 UI_PRIVACY_TITLE,Privacy Notice,Notă de confidențialitate
 UI_PRIVACY_NOTICE,"No personal data is stored. Statistics can be disabled in Settings. Under 16? Ask a parent.",Nu stocăm date personale. Statisticile se pot opri din Setări. Ai sub 16 ani? Întreabă un părinte.
+UI_IPHONE_SILENT_HINT,"iPhone: If you hear no sound, turn off Silent Mode (side switch).","iPhone: Dacă nu se aude sunetul, dezactivează modul silențios (comutatorul lateral)."
 WORLD_PRESS_INTERACT,Press to interact,Apasă pentru interacțiune
 WORLD_SPEAKER_KENJI,Kenji,Kenji
 BATTLE_FLEE,Flee,Fugi
