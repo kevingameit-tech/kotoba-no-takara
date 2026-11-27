@@ -66,7 +66,7 @@ Capitolul 1 (decis de Kevin pe 6 oct): fiecare inamic întreabă rândurile noi,
 | `c1_kappa_2` | `c1_rows_y_r_w` | や, ら, わ și ん |
 | `c1_boss_tengu` (boss) | `c1_boss_tengu`; faza 2: `c1_boss_tengu_phase2` | toate cele 46; în faza 2, cele 17 care se confundă |
 
-Toate căile `enemy` arată deocamdată spre `res://battle/data/enemies/placeholder.tres`. Ioana le înlocuiește cu inamicii reali. Ordinea din tabel este și ordinea recomandată pe hartă; David o fixează în schița capitolului 1.
+Calea `enemy` pentru `c1_boss_tengu` indică spre `res://battle/data/enemies/tengu.tres` (120 HP, Faza 2), iar ceilalți inamici folosesc deocamdată `placeholder.tres` până la finalizarea resurselor dedicate. Ordinea din tabel este și ordinea recomandată pe hartă; David o fixează în schița capitolului 1.
 
 ## dialogue/ch1.json
 

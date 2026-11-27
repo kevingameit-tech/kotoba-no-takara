@@ -102,8 +102,6 @@ func setup(encounter: Dictionary) -> void:
 	# Inițializare parametri faza de boss
 	current_phase = 1
 	phase2_pool_id = str(encounter.get("phase2_pool_id", ""))
-	if phase2_pool_id == "" and is_boss and enc_id == "c1_boss_tengu":
-		phase2_pool_id = "c1_boss_tengu_phase2"
 	if enemy_resource != null and "phase2_hp_ratio" in enemy_resource:
 		phase2_hp_ratio = float(enemy_resource.phase2_hp_ratio)
 	else:
@@ -223,10 +221,10 @@ func _on_choice_selected(chosen: String) -> void:
 
 	# Verificăm condițiile de sfârșit de luptă
 	if not enemy_battler.is_alive():
-		_feedback_label.text += "  ★ Victorie!"
+		_feedback_label.text += "  Victorie!"
 		_finish_battle("win")
 	elif not player_battler.is_alive():
-		_feedback_label.text += "  💀 Înfrângere!"
+		_feedback_label.text += "  Înfrângere!"
 		_finish_battle("lose")
 	else:
 		_next_button.visible = true
@@ -265,7 +263,7 @@ func _check_boss_phase_transition() -> bool:
 			if engine != null:
 				engine.start(phase2_pool_id, rng_seed)
 			emit_signal("phase_changed", 2)
-			_feedback_label.text += "  ⚡ FAZA 2!"
+			_feedback_label.text += "  FAZA 2!"
 			_update_ui_state()
 			return true
 	return false

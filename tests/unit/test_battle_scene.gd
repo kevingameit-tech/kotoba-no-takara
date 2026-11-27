@@ -42,6 +42,17 @@ func test_setup_tengu_boss_has_higher_hp() -> void:
 	assert_eq(_scene.encounter_data["pool_id"], "c1_boss_tengu", "Folosește pool-ul greu c1_boss_tengu")
 
 
+func test_setup_tengu_boss_with_real_question_bank_data() -> void:
+	var encounter = QuestionBank.get_encounter("c1_boss_tengu")
+	assert_false(encounter.is_empty(), "Întâlnirea c1_boss_tengu există în QuestionBank")
+	_scene.setup(encounter)
+
+	assert_true(_scene.encounter_data.get("is_boss", false), "Tengu este marcat ca boss în datele reale din encounters.json")
+	assert_eq(_scene.enemy_battler.max_hp, 120, "Tengu are 120 HP conform resursei reale din encounters.json")
+	assert_eq(_scene.encounter_data.get("phase2_pool_id", ""), "c1_boss_tengu_phase2", "Pool-ul de faza 2 este definit în encounters.json")
+	assert_eq(_scene.phase2_pool_id, "c1_boss_tengu_phase2", "BattleScene preia corect pool-ul de faza 2 din datele reale")
+
+
 func test_correct_answer_damages_enemy_and_shows_feedback() -> void:
 	var fake_engine = FakeQuizEngineScript.new()
 	fake_engine.queue_question({
