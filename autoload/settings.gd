@@ -34,7 +34,7 @@ func _load_translations() -> void:
 
 
 func set_language(code: String) -> void:
-	if code not in LANGS or code == lang:
+	if code not in LANGS:
 		return
 	lang = code
 	TranslationServer.set_locale(lang)

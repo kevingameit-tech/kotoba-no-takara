@@ -102,12 +102,14 @@ func _build_ui() -> void:
 
 	btn_lang_ro = Button.new()
 	btn_lang_ro.name = "BtnLangRO"
+	btn_lang_ro.toggle_mode = true
 	btn_lang_ro.custom_minimum_size = Vector2(80, 48)
 	btn_lang_ro.pressed.connect(_on_lang_ro_pressed)
 	lang_btn_box.add_child(btn_lang_ro)
 
 	btn_lang_en = Button.new()
 	btn_lang_en.name = "BtnLangEN"
+	btn_lang_en.toggle_mode = true
 	btn_lang_en.custom_minimum_size = Vector2(80, 48)
 	btn_lang_en.pressed.connect(_on_lang_en_pressed)
 	lang_btn_box.add_child(btn_lang_en)
@@ -184,12 +186,14 @@ func _build_ui() -> void:
 
 	btn_size_normal = Button.new()
 	btn_size_normal.name = "BtnSizeNormal"
+	btn_size_normal.toggle_mode = true
 	btn_size_normal.custom_minimum_size = Vector2(90, 48)
 	btn_size_normal.pressed.connect(_on_size_normal_pressed)
 	size_btn_box.add_child(btn_size_normal)
 
 	btn_size_large = Button.new()
 	btn_size_large.name = "BtnSizeLarge"
+	btn_size_large.toggle_mode = true
 	btn_size_large.custom_minimum_size = Vector2(90, 48)
 	btn_size_large.pressed.connect(_on_size_large_pressed)
 	size_btn_box.add_child(btn_size_large)
