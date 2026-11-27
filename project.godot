@@ -15,10 +15,17 @@ config/version="0.1.0"
 run/main_scene="res://quiz/quiz_demo.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
+Settings="*res://autoload/settings.gd"
+GameState="*res://autoload/game_state.gd"
 QuestionBank="*res://autoload/question_bank.gd"
 SaveManager="*res://autoload/save_manager.gd"
+Telemetry="*res://autoload/telemetry.gd"
 
 [display]
 
@@ -30,6 +37,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
+[gui]
+
+theme/custom="res://ui/theme.tres"
 
 [input]
 
@@ -79,6 +90,7 @@ menu={
 
 [internationalization]
 
+locale/translations=PackedStringArray("res://i18n/ui.en.translation", "res://i18n/ui.ro.translation")
 locale/include_text_server_data=true
 
 [rendering]

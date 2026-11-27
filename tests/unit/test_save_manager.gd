@@ -8,6 +8,7 @@ var manager: Node
 
 func before_each() -> void:
 	manager = autofree(load("res://autoload/save_manager.gd").new())
+	add_child_autofree(manager)
 	manager.save_path = TEST_PATH
 	manager.delete_save()
 
@@ -60,3 +61,34 @@ func test_unknown_version_gives_empty_dictionary() -> void:
 func test_default_path_is_the_contract_path() -> void:
 	var fresh: Node = autofree(load("res://autoload/save_manager.gd").new())
 	assert_eq(fresh.save_path, "user://save.json")
+
+
+func test_save_and_load_round_trip_with_game_state() -> void:
+	var gs: Node = get_node_or_null("/root/GameState")
+	if gs == null:
+		gs = autofree(load("res://autoload/game_state.gd").new())
+		gs.name = "GameState"
+		add_child_autofree(gs)
+	
+	gs.chapter = 2
+	gs.hp = 14
+	gs.cell = Vector2i(8, 4)
+	gs.defeated = ["c1_kappa_1"]
+	gs.quiz = {"h_ki": {"box": 3, "seen": 5, "wrong": 0}}
+	gs.pretest = {"form": "A", "score": 9}
+	
+	assert_eq(manager.save_game(), OK)
+	assert_true(manager.has_save())
+	
+	# Resetează GameState înainte de reîncărcare
+	gs.reset()
+	assert_eq(gs.chapter, 1)
+	assert_eq(gs.hp, 20)
+	
+	var data: Dictionary = manager.load_game()
+	assert_eq(data.get("version"), 1)
+	assert_eq(gs.chapter, 2)
+	assert_eq(gs.hp, 14)
+	assert_eq(gs.cell, Vector2i(8, 4))
+	assert_eq(gs.defeated, ["c1_kappa_1"])
+	assert_eq(gs.pretest.get("score"), 9)
