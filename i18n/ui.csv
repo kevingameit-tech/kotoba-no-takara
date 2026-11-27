@@ -15,9 +15,12 @@ MENU_TELEMETRY,Game Statistics,Statistici de joc
 MENU_TELEMETRY_DESC,Send anonymous stats to help improve the game,Trimite statistici fără date personale pentru îmbunătățirea jocului
 MENU_LANG_RO,Română,Română
 MENU_LANG_EN,English,English
+MENU_PRIVACY,Privacy,Confidențialitate
+MENU_TITLE_SUBTITLE,Japanese Language Adventure,Aventura Limbii Japoneze
 UI_OK,OK,OK
 UI_BACK,Back,Înapoi
 UI_ROTATE_DEVICE,Please rotate your device to landscape,Te rugăm să rotești telefonul în modul peisaj
+UI_PRIVACY_TITLE,Privacy Notice,Notă de confidențialitate
 UI_PRIVACY_NOTICE,"No personal data is stored. Statistics can be disabled in Settings. Under 16? Ask a parent.",Nu stocăm date personale. Statisticile se pot opri din Setări. Ai sub 16 ani? Întreabă un părinte.
 WORLD_PRESS_INTERACT,Press to interact,Apasă pentru interacțiune
 WORLD_SPEAKER_KENJI,Kenji,Kenji
