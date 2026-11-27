@@ -2,8 +2,7 @@ extends Node
 ## SaveManager (autoload): writes and reads user://save.json (IndexedDB in the web build).
 ## Contract: docs/contracts.md, section 12. Based on Mariana's first version.
 ##
-## GameState (section 4) does not exist yet, so save_game() stores only "version" and
-## "build" for now. When GameState lands, its fields are added in _collect().
+## GameState (section 12) holds the runtime state and is serialized / restored here.
 
 const SAVE_PATH: String = "user://save.json"
 const SAVE_VERSION: int = 1
@@ -20,6 +19,8 @@ func save_game() -> Error:
 		push_warning("SaveManager: cannot write %s (%s)" % [save_path, error_string(error)])
 		return error
 	file.store_string(JSON.stringify(_collect(), "\t"))
+	file.flush()
+	file.close()
 	return OK
 
 
@@ -43,6 +44,12 @@ func load_game() -> Dictionary:
 		push_warning("SaveManager: unknown save version %d" % version)
 		return {}
 	data["version"] = version
+	
+	if is_inside_tree():
+		var game_state: Node = get_node_or_null("/root/GameState")
+		if game_state != null and game_state.has_method("from_dictionary"):
+			game_state.from_dictionary(data)
+	
 	return data
 
 
@@ -56,7 +63,14 @@ func delete_save() -> void:
 
 
 func _collect() -> Dictionary:
-	return {
+	var data: Dictionary = {
 		"version": SAVE_VERSION,
 		"build": str(ProjectSettings.get_setting("application/config/version", "")),
 	}
+	if is_inside_tree():
+		var game_state: Node = get_node_or_null("/root/GameState")
+		if game_state != null and game_state.has_method("to_dictionary"):
+			var state: Dictionary = game_state.to_dictionary()
+			for k in state:
+				data[k] = state[k]
+	return data
