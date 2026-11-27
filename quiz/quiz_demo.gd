@@ -44,6 +44,19 @@ func _ready() -> void:
 	_engine = QuizEngine.new(bank)
 	_engine.start(POOL_ID, rng_seed)
 	_show_next()
+	_setup_mobile_overlays()
+
+
+func _setup_mobile_overlays() -> void:
+	var rotate_overlay: CanvasLayer = load("res://ui/rotate_overlay.tscn").instantiate()
+	add_child(rotate_overlay)
+
+	var touch_controls: CanvasLayer = load("res://ui/touch_controls.tscn").instantiate()
+	add_child(touch_controls)
+
+	if DisplayServer.get_name() != "headless":
+		var tap_to_start: CanvasLayer = load("res://ui/tap_to_start.tscn").instantiate()
+		add_child(tap_to_start)
 
 
 func _show_next() -> void:
